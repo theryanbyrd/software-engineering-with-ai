@@ -1,0 +1,16 @@
+# Default: nobody auto-approved in legacy. Every PR gets named review.
+* @your-team
+
+# Hard-restricted areas — security/payments leads
+/legacy/billing/        @your-team-payments
+/legacy/auth/           @your-team-security
+/migrations/            @your-team-platform
+/infra/                 @your-team-platform
+/.github/workflows/     @your-team-platform
+/.claude/               @your-team-platform
+
+# Brownfield infrastructure — platform team owns the bridge itself
+/legacy-bridge-scripts/ @your-team-platform
+/MVH_LEVELS.md          @your-team-platform
+/CLAUDE.md              @your-team-platform
+/AGENTS.md              @your-team-platform

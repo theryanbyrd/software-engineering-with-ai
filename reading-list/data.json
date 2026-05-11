@@ -1,0 +1,248 @@
+{
+  "$schema": "./schema.json",
+  "version": "2026.q3",
+  "last_reviewed": "2026-05-04",
+  "next_review": "2026-08-15",
+  "maintainer": "ryanbyrd",
+
+  "_notes": [
+    "This file is the source of truth for the reading list.",
+    "Run scripts/generate.py to render reading-list/README.md from this JSON.",
+    "Each entry has a dated_through field — items past their dated_through are pruned automatically.",
+    "Add new entries with the current date as added_on.",
+    "Per Ch 49: read one substantive piece per week, discuss one piece per month with the platform team, write one short note per quarter on what changed."
+  ],
+
+  "primary_sources": [
+    {
+      "name": "Anthropic engineering blog",
+      "url": "https://www.anthropic.com/engineering",
+      "category": "primary_sources",
+      "kind": "blog",
+      "why": "Closest thing to ground truth on Claude's behavior, capabilities, and best-practice prompt patterns. Short, dense, no fluff.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04",
+      "_review_note": "Re-verify URL annually; vendor blog organization changes."
+    },
+    {
+      "name": "Anthropic Claude release notes",
+      "url": "https://docs.claude.com/en/release-notes/overview",
+      "category": "primary_sources",
+      "kind": "changelog",
+      "why": "What changed in the model and API. Read every release.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "OpenAI changelog",
+      "url": "https://platform.openai.com/docs/changelog",
+      "category": "primary_sources",
+      "kind": "changelog",
+      "why": "Even if you're not building on OpenAI, you should know what they shipped.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "Google DeepMind / Gemini release notes",
+      "url": "https://blog.google/technology/google-deepmind/",
+      "category": "primary_sources",
+      "kind": "blog",
+      "why": "Gemini's coding capability has been moving fast in 2025-2026. Track for benchmark and price-point shifts.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "Cursor changelog",
+      "url": "https://cursor.com/changelog",
+      "category": "primary_sources",
+      "kind": "changelog",
+      "why": "If your team uses Cursor (most do), the changelog tells you when capabilities changed materially.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "GitHub Copilot announcements",
+      "url": "https://github.blog/changelog/label/copilot/",
+      "category": "primary_sources",
+      "kind": "changelog",
+      "why": "Copilot is the inline-completion default at most companies; track Microsoft's pace.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    }
+  ],
+
+  "research_papers_and_benchmarks": [
+    {
+      "name": "METR evaluations",
+      "url": "https://metr.org/",
+      "category": "research_papers_and_benchmarks",
+      "kind": "research",
+      "why": "The 2025 RCT on AI productivity in real codebases, plus the 2026 follow-up, are the strongest empirical evidence on what AI tooling actually does to engineering throughput. Required reading for any leader making the AI rollout case.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "DORA — State of DevOps Report",
+      "url": "https://dora.dev/",
+      "category": "research_papers_and_benchmarks",
+      "kind": "research",
+      "why": "Annual. Now includes AI-tooling correlations with the four DORA metrics. The empirical baseline for 'is this working at scale?'",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "DX quarterly impact reports",
+      "url": "https://getdx.com/research",
+      "category": "research_papers_and_benchmarks",
+      "kind": "research",
+      "why": "Largest credible empirical dataset on developer productivity (~135K developers tracked). Their AI-specific cuts are valuable.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "GitClear — code shape reports",
+      "url": "https://www.gitclear.com/coding_on_copilot_research",
+      "category": "research_papers_and_benchmarks",
+      "kind": "research",
+      "why": "Published evidence on the long-term effects of AI coding assistance on code quality. Uncomfortable findings worth engaging with honestly.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "Faros AI — enterprise telemetry",
+      "url": "https://www.faros.ai/blog",
+      "category": "research_papers_and_benchmarks",
+      "kind": "research",
+      "why": "Telemetry-driven view of AI tooling adoption and outcomes at the enterprise tier. Useful for benchmark-against-others.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "Sonar — annual State of Code Quality",
+      "url": "https://www.sonarsource.com/learn/state-of-code-quality/",
+      "category": "research_papers_and_benchmarks",
+      "kind": "research",
+      "why": "Code-quality trend data. Relevant to any conversation about whether AI tooling is making code worse or better.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "SWE-bench Verified leaderboard",
+      "url": "https://www.swebench.com/",
+      "category": "research_papers_and_benchmarks",
+      "kind": "benchmark",
+      "why": "Public benchmark for agentic coding capability. Useful directionally; not a substitute for your internal benchmark (see benchmarks/ in this repo).",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    }
+  ],
+
+  "practitioner_writing": [
+    {
+      "name": "Sean Goedecke",
+      "url": "https://www.seangoedecke.com/",
+      "category": "practitioner_writing",
+      "kind": "blog",
+      "why": "Consistently sharp on the craft of working with agents — the seven slop signatures, code review intuition. The book quotes him.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "Birgitta Böckeler",
+      "url": "https://martinfowler.com/articles/exploring-gen-ai.html",
+      "category": "practitioner_writing",
+      "kind": "blog",
+      "why": "Her ongoing 'Exploring Generative AI' memo on Martin Fowler's site is one of the most patient, hands-on practitioner views.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "Simon Willison",
+      "url": "https://simonwillison.net/",
+      "category": "practitioner_writing",
+      "kind": "blog",
+      "why": "Daily-updated public lab notebook on what's new in AI tooling. The 'datasette' and 'llm' projects are themselves worth studying.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "Andrej Karpathy",
+      "url": "https://karpathy.ai/",
+      "category": "practitioner_writing",
+      "kind": "blog",
+      "why": "Deeper-than-most explanations of what's actually happening inside the models. Read the writing, also watch the videos.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "Jesse Vincent",
+      "url": "https://blog.fsck.com/",
+      "category": "practitioner_writing",
+      "kind": "blog",
+      "why": "Practical writing on building with agents from someone deeply in the work.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "Hamel Husain",
+      "url": "https://hamel.dev/",
+      "category": "practitioner_writing",
+      "kind": "blog",
+      "why": "Strong on evaluations, fine-tuning, and the operational side of running models in production.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "Eugene Yan",
+      "url": "https://eugeneyan.com/",
+      "category": "practitioner_writing",
+      "kind": "blog",
+      "why": "Patterns for ML and LLM systems. The 'Patterns for Building LLM-based Systems & Products' essay is foundational.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "Latent Space (Swyx and Alessio)",
+      "url": "https://www.latent.space/",
+      "category": "practitioner_writing",
+      "kind": "podcast",
+      "why": "Podcast and newsletter. Strong on the founder/builder perspective; useful for understanding the vendor side of the market.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "The Pragmatic Engineer (Gergely Orosz)",
+      "url": "https://www.pragmaticengineer.com/",
+      "category": "practitioner_writing",
+      "kind": "newsletter",
+      "why": "Engineering management and culture writing. AI-tooling-specific posts have been particularly grounded.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    }
+  ],
+
+  "podcasts": [
+    {
+      "name": "How About Tomorrow?",
+      "url": "https://tomorrow.fm/",
+      "category": "podcasts",
+      "kind": "podcast",
+      "why": "Deep dives into what's emerging in software engineering with AI. Adam Elmore, Dax Raad and friends.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    },
+    {
+      "name": "Lenny's Podcast",
+      "url": "https://www.lennyspodcast.com/",
+      "category": "podcasts",
+      "kind": "podcast",
+      "why": "Product-management-focused but with frequent AI-tooling guests; useful for the cross-functional view.",
+      "added_on": "2026-05-04",
+      "dated_through": "2027-05-04"
+    }
+  ],
+
+  "_retired": {
+    "_note": "Items removed from the active list. Kept here for the maintainer's reference, NOT included in the rendered README. When an item is retired, copy the entry here with a 'retired_on' date and brief 'retired_because' note."
+  }
+}

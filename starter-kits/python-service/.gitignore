@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# venvs
+.venv/
+venv/
+env/
+
+# tool caches
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# editor
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# env
+.env
+.env.local
+
+# audit output (do not commit)
+audit-report.html
+audit.json

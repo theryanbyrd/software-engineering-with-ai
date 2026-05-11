@@ -1,0 +1,35 @@
+# TypeScript Monorepo Starter — Route Map
+
+This repository is a TypeScript monorepo. Use this map to find your way around.
+
+## Conventions and rules
+
+- /CLAUDE.md            — Project memory, conventions, restrictions
+- /AGENTS.md            — Cross-vendor agent guidance (mirrors CLAUDE.md)
+- /SECURITY.md          — Security policy, AI tooling disclosure
+
+## Packages
+
+- /packages/shared/     — Shared library (utilities, types). Leaf package.
+- /packages/api/        — Example API service.
+
+Each package has its own AGENTS.md describing its purpose and entry points.
+
+## Build and verify
+
+- /package.json         — Root config, npm workspaces, verify script
+- /tsconfig.base.json   — Base TS config inherited by packages
+- /scripts/verify.sh    — Verify runner (lint + typecheck + format + test)
+
+## Harness (Claude Code)
+
+- /.claude/settings.json — Hooks wiring
+- /.claude/skills/       — Reusable skill playbooks
+- /.claude/agents/       — Subagent roster (planner, reviewer, test-writer)
+- /.claude/hooks/        — Bash firewall, protected paths, post-edit format
+
+## CI and PR
+
+- /.github/workflows/verify.yml      — CI pipeline
+- /.github/pull_request_template.md  — PR template with AI authorship tags
+- /.github/CODEOWNERS                — Review routing

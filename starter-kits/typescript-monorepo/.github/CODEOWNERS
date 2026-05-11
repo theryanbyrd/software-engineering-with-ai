@@ -1,0 +1,8 @@
+# Default owner for everything
+* @your-team
+
+# Restricted paths — require explicit review
+/packages/api/src/auth/    @your-team-security
+/packages/api/src/billing/ @your-team-payments
+/.github/workflows/        @your-team-platform
+/.claude/                  @your-team-platform

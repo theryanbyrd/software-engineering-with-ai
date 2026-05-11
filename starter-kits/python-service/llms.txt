@@ -1,0 +1,39 @@
+# Python Service Starter — Route Map
+
+This repository is a Python FastAPI service. Use this map to find your way around.
+
+## Conventions and rules
+
+- /CLAUDE.md            — Project memory, conventions, restrictions
+- /AGENTS.md            — Cross-vendor agent guidance (mirrors CLAUDE.md)
+- /SECURITY.md          — Security policy, AI tooling disclosure
+
+## Source
+
+- /src/starter/         — Service package
+- /src/starter/shared.py — Leaf module: pure utilities, no I/O
+- /src/starter/api/     — FastAPI adapter and handlers
+
+## Tests
+
+- /tests/               — pytest test suite, mirrors src/ layout
+
+## Build and verify
+
+- /pyproject.toml       — Deps, tool config (ruff/mypy/black/pytest)
+- /Makefile             — Verify orchestration
+- /scripts/verify.sh    — Wrapper for CI
+- /.python-version      — Python version pin
+
+## Harness (Claude Code)
+
+- /.claude/settings.json — Hooks wiring
+- /.claude/skills/       — Reusable skill playbooks (Python-flavored)
+- /.claude/agents/       — Subagent roster (planner, reviewer, test-writer)
+- /.claude/hooks/        — Bash firewall, protected paths, post-edit format
+
+## CI and PR
+
+- /.github/workflows/verify.yml      — CI pipeline
+- /.github/pull_request_template.md  — PR template with AI authorship tags
+- /.github/CODEOWNERS                — Review routing

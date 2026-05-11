@@ -1,0 +1,9 @@
+# Default owner for everything
+* @your-team
+
+# Restricted paths — require explicit review
+/src/starter/api/auth/    @your-team-security
+/src/starter/api/billing/ @your-team-payments
+/.github/workflows/       @your-team-platform
+/.claude/                 @your-team-platform
+/pyproject.toml           @your-team-platform

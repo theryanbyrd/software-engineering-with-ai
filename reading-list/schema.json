@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AI Engineering Reading List",
+  "description": "Schema for the JSON-driven reading list per Ch 49 of the handbook",
+  "type": "object",
+  "required": ["version", "last_reviewed", "next_review", "maintainer"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]{4}\\.q[1-4]$",
+      "description": "Quarterly version, e.g., '2026.q3'"
+    },
+    "last_reviewed": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 date of last full review"
+    },
+    "next_review": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 date of next scheduled review (typically +90 days)"
+    },
+    "maintainer": {
+      "type": "string",
+      "description": "GitHub or LinkedIn handle of the current maintainer"
+    },
+    "_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "primary_sources": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/entry" }
+    },
+    "research_papers_and_benchmarks": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/entry" }
+    },
+    "practitioner_writing": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/entry" }
+    },
+    "podcasts": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/entry" }
+    },
+    "_retired": {
+      "type": "object",
+      "description": "Retired entries kept for maintainer reference; not rendered"
+    }
+  },
+  "definitions": {
+    "entry": {
+      "type": "object",
+      "required": ["name", "url", "category", "kind", "why", "added_on", "dated_through"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https?://"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "primary_sources",
+            "research_papers_and_benchmarks",
+            "practitioner_writing",
+            "podcasts"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "blog",
+            "changelog",
+            "research",
+            "benchmark",
+            "podcast",
+            "newsletter",
+            "book"
+          ]
+        },
+        "why": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 500,
+          "description": "1-2 sentences on why this is worth reading. No marketing language."
+        },
+        "added_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "dated_through": {
+          "type": "string",
+          "format": "date",
+          "description": "After this date, the entry is auto-pruned by generate.py unless renewed during quarterly review"
+        },
+        "_review_note": {
+          "type": "string",
+          "description": "Optional internal note for the maintainer; not rendered"
+        }
+      }
+    }
+  }
+}

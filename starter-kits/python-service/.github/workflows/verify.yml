@@ -1,0 +1,40 @@
+name: Verify
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+          cache: pip
+
+      - name: Install
+        run: pip install -e ".[dev]"
+
+      - name: Verify
+        run: make verify
+
+  ai-readiness-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run AI readiness audit
+        run: |
+          curl -sL https://raw.githubusercontent.com/ryanbyrd/ai-engineering-handbook/main/scripts/ai-readiness-audit.py -o /tmp/audit.py || cp ../../scripts/ai-readiness-audit.py /tmp/audit.py
+          python3 /tmp/audit.py . --threshold 70
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: audit-report
+          path: audit-report.html

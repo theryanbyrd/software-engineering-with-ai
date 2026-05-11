@@ -1,0 +1,39 @@
+# Legacy Codebase — Route Map
+
+THIS IS A LEGACY CODEBASE. Read CLAUDE.md before doing anything.
+
+## Conventions and rules
+
+- /CLAUDE.md            — Project memory (read first; longer than greenfield)
+- /AGENTS.md            — Cross-vendor agent guidance (mirrors CLAUDE.md)
+- /BROWNFIELD_PLAN.md   — 90-day brownfield migration plan
+- /MVH_LEVELS.md        — Maturity scoring rubric (level 1-4)
+
+## What's known vs. unknown
+
+- /docs/architecture-as-known.md   — What we have documented (often partial)
+- /docs/architecture-as-feared.md  — What we suspect but cannot confirm (TBD)
+- /docs/adr/                        — Architecture decision records (often empty)
+
+## Modules — see CLAUDE.md § Module status
+
+Each module has a row in the Module Status table in CLAUDE.md indicating
+whether it is safe to AI-edit. Default for unlisted modules: NOT SAFE.
+
+## Build and verify
+
+- /legacy-bridge-scripts/discover.sh             — Auto-detect what's in the repo
+- /legacy-bridge-scripts/golden-master-record.sh — Record current behavior of a module
+- /legacy-bridge-scripts/legacy-verify.sh        — Verify command (adapts to what exists)
+
+## Harness
+
+- /.claude/settings.json       — Hooks wiring (heavy restrictions)
+- /.claude/skills/             — Brownfield skills (strangler-pattern, characterize, read-only-discovery)
+- /.claude/agents/             — legacy-explorer subagent
+- /.claude/hooks/              — fence-new-violations, no-l3-in-legacy, legacy-protected-paths
+
+## CI and PR
+
+- /.github/workflows/legacy-verify.yml      — CI runs legacy-verify
+- /.github/pull_request_template.md         — Brownfield-flavored checklist

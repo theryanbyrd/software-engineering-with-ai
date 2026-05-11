@@ -1,0 +1,63 @@
+name: Legacy Verify
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  legacy-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # need history for golden master comparisons
+
+      - name: Detect changed modules
+        id: changed
+        run: |
+          # Find modules touched in this PR
+          modules=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | \
+                    awk -F/ '{print $1"/"$2}' | sort -u | head -10)
+          echo "modules=$modules" >> "$GITHUB_OUTPUT"
+
+      - name: Run legacy-verify on changed modules
+        run: |
+          for module in ${{ steps.changed.outputs.modules }}; do
+            echo "::group::legacy-verify $module"
+            bash legacy-bridge-scripts/legacy-verify.sh "$module" || exit 1
+            echo "::endgroup::"
+          done
+
+  ai-readiness-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run AI readiness audit
+        run: |
+          curl -sL https://raw.githubusercontent.com/ryanbyrd/ai-engineering-handbook/main/scripts/ai-readiness-audit.py -o /tmp/audit.py || cp ../../scripts/ai-readiness-audit.py /tmp/audit.py
+          python3 /tmp/audit.py . --threshold 50    # Lower threshold for brownfield; aim is to track upward over time
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: audit-report
+          path: audit-report.html
+
+  pr-size-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Enforce 100-line PR cap
+        run: |
+          ADDED=$(git diff --shortstat origin/${{ github.base_ref }}...HEAD | awk '{print $4}')
+          REMOVED=$(git diff --shortstat origin/${{ github.base_ref }}...HEAD | awk '{print $6}')
+          TOTAL=$((${ADDED:-0} + ${REMOVED:-0}))
+          echo "Total lines changed: $TOTAL"
+          if [ "$TOTAL" -gt 100 ]; then
+            echo "::error::PR exceeds the 100-line cap for legacy work. Decompose into smaller PRs."
+            exit 1
+          fi
