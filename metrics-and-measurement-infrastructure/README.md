@@ -41,9 +41,9 @@ Three things follow:
 | 1 | AI Token Usage per Developer | Adoption rate and cost-control input — *never* a perf-eval metric |
 | 2 | Code Maturity Score (1–10, LLM-graded) | The highest-leverage signal — and the highest-investment to set up |
 | 3 | Features Delivered to Bugs Introduced Ratio | DORA "change failure rate" inverted |
-| 4 | Time from User Story to Production | DORA "lead time" with a slight modification |
-| 5 | (see Ch 31.1 in the book) | — |
-| 6 | (see Ch 31.1 in the book) | — |
+| 4 | Time from User Story to Production | DORA "lead time" with the in-progress-column anchor |
+| 5 | Story Points Delivered | Team velocity — track the trend, not the absolute |
+| 6 | Predictability: 1 − (σ/µ) | The single most underrated metric in software engineering |
 | 7 | Score / Question / Opportunity / Train | Lives in [`triage-taxonomy.md`](triage-taxonomy.md), tied to [`../failed-one-shot-triage`](../failed-one-shot-triage) |
 
 ## The six quality decay signals (Ch 31)
