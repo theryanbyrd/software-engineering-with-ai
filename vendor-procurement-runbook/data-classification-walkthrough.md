@@ -79,7 +79,7 @@ C4 + ITAR/CMMC      ⚠ (Bedrock    ✗            ✗            ✗
 `✗` = not approved
 `(BAA)` / `(BYOK)` = additional condition
 
-A more comprehensive template is in `exec-kit/approved-tooling-matrix-template.xlsx`.
+A more comprehensive template is in `executive-strategic-kit/approved-tooling-matrix-template.xlsx`.
 
 ## When the matrix needs updating
 
@@ -126,6 +126,6 @@ The right "one tool for everything" is the highest-class-approved tool. Most com
 
 - [`security-review-template.md`](security-review-template.md) — produces the input for the matrix
 - [`contract-terms-negotiation-script.md`](contract-terms-negotiation-script.md) — what to negotiate to move a vendor up a class
-- `exec-kit/data-classification-matrix.xlsx` — template
-- `exec-kit/approved-tooling-matrix-template.xlsx` — template
+- `executive-strategic-kit/data-classification-matrix.xlsx` — template
+- `executive-strategic-kit/approved-tooling-matrix-template.xlsx` — template
 - Ch 41 — adjacent compliance context

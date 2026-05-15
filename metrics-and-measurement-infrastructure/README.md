@@ -60,7 +60,7 @@ Per Ch 31: two consecutive months of decay on three or more is a "pull the lever
 ## Who this is for
 
 - **VPs of Engineering** who need to answer "is the AI investment working?" with evidence rather than vibes
-- **CTOs** preparing the board-level ROI conversation (see also [`../exec-kit`](../exec-kit))
+- **CTOs** preparing the board-level ROI conversation (see also [`../executive-strategic-kit`](../executive-strategic-kit))
 - **Platform engineers** building the measurement layer once, so individual teams don't reinvent it
 - **Engineering managers** running a team-level rollout who need the right dashboard before week 1
 

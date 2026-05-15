@@ -191,5 +191,5 @@ If 2+ senior engineers have signaled they would consider leaving over a tool mig
 - `scripts/cursorrules-to-claude-md.py` — mechanical translator
 - [`team-conversation-scripts.md`](team-conversation-scripts.md) — verbatim conversation openers
 - `war-stories/004-the-cursor-migration-mandate.md` — what happens without this playbook
-- `exec-kit/ceo-emails/` — leadership communication during migration
+- `executive-strategic-kit/ceo-emails/` — leadership communication during migration
 - `benchmarks/` — verify the new tool's quality on your work before consolidating

@@ -28,7 +28,7 @@ Every playbook here applies this principle. If your situation requires rip-and-r
 
 The migration playbooks address the **process and people** side of migration. They assume:
 
-1. You've already decided that migration is the right call (or that running parallel is). The decision-making rubric for that is in the exec-kit, not here.
+1. You've already decided that migration is the right call (or that running parallel is). The decision-making rubric for that is in the executive-strategic-kit, not here.
 2. You have at least one senior engineer who wants the migration. A migration without a senior champion fails regardless of the playbook.
 3. You have budget for parallel use. Most playbooks assume one to two quarters of dual licensing. If you can't afford this, see [`pre-migration-checklist.md`](pre-migration-checklist.md) for the Day 0 conversation.
 4. You're not in the middle of an active incident, a layoff, or a reorg. Those compound badly with tool migrations.
@@ -67,10 +67,10 @@ The migration playbooks address the **process and people** side of migration. Th
 These playbooks reference and pair with:
 
 - `scripts/cursorrules-to-claude-md.py` — the mechanical translator for `.cursorrules` → CLAUDE.md
-- `exec-kit/ceo-emails/` — leadership communication templates
+- `executive-strategic-kit/ceo-emails/` — leadership communication templates
 - `war-stories/004-the-cursor-migration-mandate.md` — what happens when you skip the playbook
 - `people/jds/senior-engineer-ai-native.md` — the JD that anchors what "good" looks like post-migration
-- `governance/prompt-injection-test-suite/` — verify the new tool's harness is at least as secure as the old one before relying on it
+- `prompt-injection-test-suite/` — verify the new tool's harness is at least as secure as the old one before relying on it
 
 ## Calibration tip
 

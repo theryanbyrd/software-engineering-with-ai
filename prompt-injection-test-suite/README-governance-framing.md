@@ -36,7 +36,7 @@ The suite is **agent-agnostic by design.** It tests the harness — your hooks, 
 
 ```bash
 # 1. Install (stdlib only — no dependencies)
-cd governance/prompt-injection-test-suite
+cd prompt-injection-test-suite
 
 # 2. Configure your agent endpoint and credentials in a local .env
 cp .env.example .env

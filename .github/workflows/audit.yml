@@ -1,0 +1,87 @@
+name: AI Readiness Audit
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  audit-starter-kits:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        kit:
+          - typescript-monorepo
+          - python-service
+          - legacy-bridge
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run AI Readiness Audit on ${{ matrix.kit }}
+        run: |
+          python3 scripts/ai-readiness-audit.py starter-kits/${{ matrix.kit }} \
+            --output audit-${{ matrix.kit }}.html \
+            --json audit-${{ matrix.kit }}.json \
+            --threshold ${{ matrix.kit == 'legacy-bridge' && '60' || '85' }}
+      - name: Upload audit artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-${{ matrix.kit }}
+          path: |
+            audit-${{ matrix.kit }}.html
+            audit-${{ matrix.kit }}.json
+          retention-days: 30
+      - name: Comment audit summary on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = `audit-${{ matrix.kit }}.json`;
+            if (!fs.existsSync(path)) return;
+            const report = JSON.parse(fs.readFileSync(path, 'utf8'));
+            const body = [
+              `### Audit — \`starter-kits/${{ matrix.kit }}\``,
+              `Score: **${report.score}/${report.max} (${report.percent}%)**`,
+              `Threshold: ${{ matrix.kit == 'legacy-bridge' && '60' || '85' }}%`,
+              '',
+              report.failed_checks?.length
+                ? `Failed checks:\n${report.failed_checks.map(c => `- ${c.name}`).join('\n')}`
+                : 'All checks passed.'
+            ].join('\n');
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body
+            });
+
+  audit-self:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Audit the repo itself
+        run: |
+          python3 scripts/ai-readiness-audit.py . \
+            --output audit-self.html \
+            --json audit-self.json
+      - name: Upload self-audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-self
+          path: |
+            audit-self.html
+            audit-self.json
+          retention-days: 30

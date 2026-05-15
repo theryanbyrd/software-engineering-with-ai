@@ -150,6 +150,6 @@ The CEO will sometimes interpret "we should switch" as "switch this week." It is
 
 - [`benchmarks/`](../benchmarks/) — the eval that makes this conversation possible
 - [`migration-playbooks/`](../migration-playbooks/) — the migration discipline if the eval supports switching
-- `exec-kit/ceo-emails/` — overlapping written templates for executive comms
+- `executive-strategic-kit/ceo-emails/` — overlapping written templates for executive comms
 - Ch 27 — the model routing chapter
 - Ch 31 — the metrics that make the dashboard work

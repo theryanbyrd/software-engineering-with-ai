@@ -21,8 +21,8 @@ This playbook covers the discovery → governance transition. The migration here
 
 - Ch 41 §41.x (data classification and AI tooling)
 - Ch 53 §53.6
-- `exec-kit/data-classification-matrix.xlsx` — the framework you're enforcing
-- `exec-kit/approved-tooling-matrix-template.xlsx` — what gets added to (or rejected from)
+- `executive-strategic-kit/data-classification-matrix.xlsx` — the framework you're enforcing
+- `executive-strategic-kit/approved-tooling-matrix-template.xlsx` — what gets added to (or rejected from)
 
 ## When this playbook applies
 
@@ -179,8 +179,8 @@ Different scenario; this playbook becomes secondary. The primary work is the reg
 
 ## Companion artifacts
 
-- `exec-kit/data-classification-matrix.xlsx`
-- `exec-kit/approved-tooling-matrix-template.xlsx`
-- `exec-kit/security-questionnaire-answers.md`
+- `executive-strategic-kit/data-classification-matrix.xlsx`
+- `executive-strategic-kit/approved-tooling-matrix-template.xlsx`
+- `executive-strategic-kit/security-questionnaire-answers.md`
 - [`team-conversation-scripts.md`](team-conversation-scripts.md) §5
-- `governance/prompt-injection-test-suite/` — verify any newly approved tool's harness
+- `prompt-injection-test-suite/` — verify any newly approved tool's harness

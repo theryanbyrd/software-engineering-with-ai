@@ -495,7 +495,7 @@ def check_security_md(repo: Path) -> CheckResult:
     if has_content(p, 100):
         return CheckResult(**base, status="pass")
     return CheckResult(**base, status="fail",
-                       fix="Create SECURITY.md. Include AI tooling disclosure (see exec-kit/security-questionnaire-answers.md).")
+                       fix="Create SECURITY.md. Include AI tooling disclosure (see executive-strategic-kit/security-questionnaire-answers.md).")
 
 
 def check_forbidden_listed(repo: Path) -> CheckResult:
@@ -522,24 +522,50 @@ def check_invariants_documented(repo: Path) -> CheckResult:
                 chapter_ref="Ch 9",
                 description="Hard invariants the agent must respect (UI cannot import from db, all auth server-side, etc.).",
                 weight=2)
-    text = read(find_first(repo, "CLAUDE.md")).lower() + " " + read(find_first(repo, "AGENTS.md")).lower()
+    # Read both files preserving case so we can match section headings (positive phrasing).
+    raw_claude = read(find_first(repo, "CLAUDE.md"))
+    raw_agents = read(find_first(repo, "AGENTS.md"))
+    raw = raw_claude + "\n" + raw_agents
+    text = raw.lower()
+
+    # Require at least one POSITIVELY-PHRASED invariant section. A repo that
+    # only mentions "we used to have this invariant" or "no invariant here"
+    # would false-positive on keyword counting alone — exactly the auditor-
+    # hallucinating-findings pattern Appendix L warns against.
+    heading_patterns = [
+        r"^\s*#+\s*(architecture\s+)?invariants?\b",
+        r"^\s*#+\s*(architectural\s+)?(constraints|boundaries)\b",
+        r"^\s*#+\s*forbidden\s+(operations|patterns|imports)\b",
+        r"^\s*#+\s*must\s+not\b",
+    ]
+    has_positive_heading = any(re.search(pat, raw, re.MULTILINE | re.IGNORECASE) for pat in heading_patterns)
+
+    # Negative-context disqualifier: count occurrences of "no invariant", "used to be invariant",
+    # "removed invariant" — these are talking about what is NOT there, not what IS.
+    negative_markers = ["no invariant", "used to have", "removed invariant", "no longer invariant", "deprecated invariant"]
+    has_negative_only = any(m in text for m in negative_markers) and not has_positive_heading
+
     indicators = ["invariant", "must not import", "boundary", "architecture", "never deletes", "idempotent"]
     matches = sum(1 for i in indicators if i in text)
-    if matches >= 2:
+
+    if has_positive_heading and matches >= 2:
         return CheckResult(**base, status="pass")
-    if matches >= 1:
+    if has_positive_heading or (matches >= 2 and not has_negative_only):
         return CheckResult(**base, status="warn",
-                           fix="Document at least 3 architectural invariants explicitly.")
+                           fix="Add a clearly-labeled 'Architecture invariants' section (a Markdown heading) with at least 3 positively-phrased invariants.")
     return CheckResult(**base, status="fail",
-                       fix="Add an 'Architecture invariants' section to CLAUDE.md.")
+                       fix="Add an explicit 'Architecture invariants' section to CLAUDE.md with at least 3 invariants written in the positive (what MUST hold), not the negative (what no longer holds).")
 
 
 def check_cost_telemetry_referenced(repo: Path) -> CheckResult:
+    # Bumped to weight=2 in v2026.q3: Ch 29 treats cost telemetry as near-mandatory for
+    # any production agentic workflow. A repo without observable cost is a repo with
+    # an unbounded budget risk; nice-to-have framing understated the stakes.
     base = dict(name="Cost telemetry / token tracking referenced",
                 category="Cost & observability",
                 chapter_ref="Ch 26, Ch 29",
                 description="Reference to cost gateway, LiteLLM, Bifrost, Helicone, or token-budget mechanism.",
-                weight=1)
+                weight=2)
     paths_to_check = [
         find_first(repo, "CLAUDE.md"),
         find_first(repo, "AGENTS.md"),
@@ -581,7 +607,7 @@ def check_data_classification(repo: Path) -> CheckResult:
         return CheckResult(**base, status="pass")
     if matches >= 1:
         return CheckResult(**base, status="warn",
-                           fix="Add a data classification matrix (see exec-kit/data-classification-matrix).")
+                           fix="Add a data classification matrix (see executive-strategic-kit/data-classification-matrix).")
     return CheckResult(**base, status="fail",
                        fix="Document data classification (public / internal / confidential / customer / regulated) and which AI tools can touch each.")
 
@@ -610,6 +636,107 @@ def check_incident_runbook(repo: Path) -> CheckResult:
                            fix="Update postmortem template to include AI-authored-code path (see governance/ in companion repo).")
     return CheckResult(**base, status="fail",
                        fix="Add an incident response runbook with AI-aware procedures.")
+
+
+
+def check_claude_settings_permissions(repo: Path) -> CheckResult:
+    """Check that .claude/settings.json has a permissions block — the single
+    most likely place an autonomy-drift incident starts. A repo with .claude/
+    configured but no permissions block is a repo where the agent has whatever
+    default tool access the harness gives, which is rarely what you want.
+    """
+    import json as _json
+    base = dict(name=".claude/settings.json has explicit permissions",
+                category="Governance",
+                chapter_ref="Ch 17, Ch 32",
+                description="Permissions block in .claude/settings.json scopes tool access. Without it, defaults apply.",
+                weight=2)
+    settings = repo / ".claude" / "settings.json"
+    if not settings.is_file():
+        if (repo / ".claude").is_dir():
+            return CheckResult(**base, status="warn",
+                               fix="Add .claude/settings.json with an explicit `permissions` block.")
+        # No .claude/ at all — let check_claude_dir flag that
+        return CheckResult(**base, status="fail",
+                           fix="Create .claude/settings.json with explicit `permissions` (allow/deny lists for tool use).")
+    try:
+        data = _json.loads(settings.read_text())
+    except (_json.JSONDecodeError, OSError):
+        return CheckResult(**base, status="fail",
+                           fix=".claude/settings.json failed to parse as JSON. Fix syntax and re-run.")
+    if not isinstance(data, dict) or "permissions" not in data:
+        return CheckResult(**base, status="fail",
+                           fix="Add an explicit `permissions` block to .claude/settings.json (allow / deny / ask lists).")
+    perms = data["permissions"]
+    if not isinstance(perms, dict):
+        return CheckResult(**base, status="warn",
+                           fix="The `permissions` value should be an object with allow/deny/ask keys.")
+    # Look for any of allow/deny/ask
+    if any(k in perms for k in ("allow", "deny", "ask")):
+        return CheckResult(**base, status="pass")
+    return CheckResult(**base, status="warn",
+                       fix="The `permissions` block exists but has no allow/deny/ask entries.")
+
+
+def check_branch_protection(repo: Path, github_token: Optional[str] = None) -> CheckResult:
+    """Check that main branch has protection rules. Requires a GitHub token
+    passed via --github-token to query the API; without one, returns a warn
+    explaining the limitation rather than silently passing.
+    """
+    base = dict(name="Branch protection on main",
+                category="Governance",
+                chapter_ref="Ch 21, Ch 32",
+                description="Protected main branch (required reviews, status checks) prevents AI-authored PRs from merging unreviewed.",
+                weight=2)
+    if not github_token:
+        return CheckResult(**base, status="warn",
+                           fix="Re-run with --github-token to check branch protection rules via the GitHub API. Without it this check is conservative.")
+    # Try to derive owner/repo from git remote
+    try:
+        import subprocess
+        result = subprocess.run(["git", "-C", str(repo), "remote", "get-url", "origin"],
+                                capture_output=True, text=True, timeout=5)
+        url = result.stdout.strip()
+        # Parse github.com/<owner>/<repo>
+        import re as _re
+        m = _re.search(r"github\.com[:/]([^/]+)/([^/.]+)", url)
+        if not m:
+            return CheckResult(**base, status="warn",
+                               fix="Could not derive owner/repo from git remote — branch protection check skipped.")
+        owner, repo_name = m.group(1), m.group(2)
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired, FileNotFoundError):
+        return CheckResult(**base, status="warn",
+                           fix="Could not run git to derive remote URL — branch protection check skipped.")
+    try:
+        import urllib.request as _ur
+        req = _ur.Request(
+            f"https://api.github.com/repos/{owner}/{repo_name}/branches/main/protection",
+            headers={"Authorization": f"Bearer {github_token}", "Accept": "application/vnd.github+json"},
+        )
+        with _ur.urlopen(req, timeout=10) as resp:
+            if resp.status == 200:
+                import json as _json
+                data = _json.loads(resp.read())
+                req_reviews = data.get("required_pull_request_reviews", {}).get("required_approving_review_count", 0)
+                req_checks = bool(data.get("required_status_checks", {}).get("contexts"))
+                if req_reviews >= 1 and req_checks:
+                    return CheckResult(**base, status="pass")
+                if req_reviews >= 1 or req_checks:
+                    return CheckResult(**base, status="warn",
+                                       fix="Branch protection exists but is partial. Require at least 1 review AND 1 status check.")
+                return CheckResult(**base, status="warn",
+                                   fix="Branch protection rules exist but enforce neither reviews nor status checks.")
+    except Exception as e:
+        # 404 means no protection. Other errors mean the check couldn't run.
+        msg = str(e).lower()
+        if "404" in msg:
+            return CheckResult(**base, status="fail",
+                               fix="No branch protection on main. Configure required reviews + status checks in GitHub repo settings.")
+        return CheckResult(**base, status="warn",
+                           fix=f"Branch protection API call failed: {e}. Re-run with valid --github-token.")
+    return CheckResult(**base, status="warn",
+                       fix="Branch protection check did not complete; check token permissions (needs repo:read on the target).")
+
 
 
 # ---------------------------------------------------------------------------
@@ -641,6 +768,8 @@ ALL_CHECKS: List[Callable[[Path], CheckResult]] = [
     check_cost_telemetry_referenced,
     check_data_classification,
     check_incident_runbook,
+    check_claude_settings_permissions,
+    # check_branch_protection is invoked separately with the github_token arg
 ]
 
 
@@ -823,7 +952,7 @@ def render_html(repo: Path, results: List[CheckResult]) -> str:
 
 <footer>
   Generated by ai-readiness-audit.py · companion to <em>{escape(BOOK_TITLE)}</em>.
-  <br>The book and this script are MIT-licensed. Update via <a href="https://github.com/ryanbyrd/ai-engineering-handbook">github.com/ryanbyrd/ai-engineering-handbook</a>.
+  <br>The book and this script are MIT-licensed. Update via <a href="https://github.com/theryanbyrd/software-engineering-with-ai">github.com/theryanbyrd/software-engineering-with-ai</a>.
 </footer>
 </body>
 </html>
@@ -843,10 +972,13 @@ def main() -> int:
     parser.add_argument("repo", help="Path to repository to audit")
     parser.add_argument("-o", "--output", default="audit-report.html",
                         help="HTML output path (default: audit-report.html)")
-    parser.add_argument("--json", action="store_true", help="Output JSON instead of HTML")
+    parser.add_argument("--json", nargs="?", const=True, default=False,
+                        help="Output JSON. Optionally pass a path to write to (otherwise stdout).")
     parser.add_argument("--text", action="store_true", help="Print text summary to stdout")
     parser.add_argument("--threshold", type=int, default=None,
                         help="Exit with code 1 if score is below this percentage (for CI use)")
+    parser.add_argument("--github-token", default=None,
+                        help="GitHub PAT/token for the branch-protection check. Without it, that check is skipped with a warn.")
     args = parser.parse_args()
 
     repo = Path(args.repo).resolve()
@@ -855,6 +987,9 @@ def main() -> int:
         return 2
 
     results = run_audit(repo)
+    # Branch protection is an out-of-band check that needs the GitHub API + a token.
+    # Run it explicitly here so we can pass the token without threading it through run_audit.
+    results.append(check_branch_protection(repo, args.github_token))
     score, max_score = overall_score(results)
     pct = 100 * score / max_score if max_score else 0
 
@@ -865,11 +1000,20 @@ def main() -> int:
             "score": score,
             "max_score": max_score,
             "percentage": round(pct, 1),
+            "percent": round(pct, 1),  # alias used by CI workflow
             "stack": detect_stack(repo),
             "results": [asdict(r) for r in results],
+            "failed_checks": [
+                {"name": r.name, "status": r.status, "fix": r.fix}
+                for r in results if r.status == "fail"
+            ],
             "generated": datetime.datetime.now().isoformat(),
         }
-        print(json.dumps(out, indent=2))
+        rendered = json.dumps(out, indent=2)
+        if isinstance(args.json, str):
+            Path(args.json).write_text(rendered)
+        else:
+            print(rendered)
     else:
         Path(args.output).write_text(render_html(repo, results))
         print(render_text(repo, results))

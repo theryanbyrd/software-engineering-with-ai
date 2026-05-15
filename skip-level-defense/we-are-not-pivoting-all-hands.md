@@ -151,4 +151,4 @@ If two of these are true, this template is wrong. Run a different conversation: 
 - [`benchmarks/`](../benchmarks/) — the eval discipline that makes "we'll evaluate" credible
 - [`reading-list/`](../reading-list/) — primary sources to verify claims against
 - `migration-playbooks/team-conversation-scripts.md` §6 — overlap with "holding the line"
-- `exec-kit/ceo-emails/` — written templates for the executive variant
+- `executive-strategic-kit/ceo-emails/` — written templates for the executive variant

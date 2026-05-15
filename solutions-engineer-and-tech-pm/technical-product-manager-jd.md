@@ -2,7 +2,7 @@
 
 A template for a Technical PM JD calibrated to Ch 42 §42.5's framing:
 
-> Tech PMs increasingly write executable specs (Chapter 4), workshop them with the Tixie pattern (Chapter 19), and ship features with light engineering involvement on bounded T1/T2 work. The line between PM and engineer blurs in the other direction.
+> Tech PMs increasingly write executable specs (Chapter 4), workshop them with the Intake pattern (Chapter 19), and ship features with light engineering involvement on bounded T1/T2 work. The line between PM and engineer blurs in the other direction.
 
 ## How to use this template
 
@@ -20,7 +20,7 @@ The bar this JD encodes excludes a substantial fraction of the historical PM can
 
 ## The role
 
-You'll own a product area end-to-end. The discovery, the strategy, the prioritization, the coordination — the full PM job. What's different in 2026: you'll also write executable specs that engineering teams hand to AI agents and ship from. You'll workshop those specs with engineers and customers using the Tixie pattern (or your team's equivalent). On bounded T1/T2 work, you'll occasionally ship the change yourself, with engineering review.
+You'll own a product area end-to-end. The discovery, the strategy, the prioritization, the coordination — the full PM job. What's different in 2026: you'll also write executable specs that engineering teams hand to AI agents and ship from. You'll workshop those specs with engineers and customers using the Intake pattern (or your team's equivalent). On bounded T1/T2 work, you'll occasionally ship the change yourself, with engineering review.
 
 This is a technical PM role for the AI-native era. We expect you to read code, hold a cost-vs-capability conversation with engineering, and recognize when an AI-generated solution is shipping the wrong feature confidently. We don't expect you to be a senior engineer; we do expect you to be technical enough to do the job we're describing.
 
@@ -29,7 +29,7 @@ This is a technical PM role for the AI-native era. We expect you to read code, h
 - **Discovery and strategy.** Standard PM work. Talk to customers; identify the real problem; build a thesis; defend the thesis with evidence.
 - **Roadmap and prioritization.** Standard PM work. The hard tradeoffs about what's in and what's out. The negotiations with engineering and design.
 - **Executable specs.** This is the part that distinguishes the role. You write specs that an engineer can hand to an agent and ship. The spec is concrete enough that it does not require a 40-minute "what does this mean" call before implementation.
-- **Spec workshops.** You run cross-functional workshops where the spec is refined live with engineering and design. The Tixie pattern (Ch 19) is one approach; pick what works for your team.
+- **Spec workshops.** You run cross-functional workshops where the spec is refined live with engineering and design. The Intake pattern (Ch 19) is one approach; pick what works for your team.
 - **Cost-vs-capability conversations.** When engineering says "this would cost N tokens per run at scale," you can hold the conversation. You understand what the costs are, what the trade-offs are, and you can make decisions calibrated to those costs.
 - **Light engineering on T1 work.** When a feature is small and well-understood, you sometimes ship the change yourself. The engineer reviews. You ship. This is occasional, not routine — but it's the muscle that keeps your specs grounded.
 - **Cross-functional partnership.** You partner with engineering managers, designers, customer success, and sales. You translate engineering's reality to the rest of the org and the rest of the org's reality to engineering.

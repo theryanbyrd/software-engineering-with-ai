@@ -86,7 +86,7 @@ The first thing you should ask Claude:
 
 - **It will not modernize your codebase.** Modernization is a multi-year program; the harness is a precondition for it.
 - **It will not give you greenfield productivity in legacy.** Realistic gains in well-instrumented legacy modules are 5-8% on tier-2 work. Above that requires investment we cannot ship in a starter kit.
-- **It will not make your CEO patient.** Use [`exec-kit/ceo-emails/defending-the-investment.md`](../../exec-kit/ceo-emails/defending-the-investment.md) for that conversation, and be honest about timelines.
+- **It will not make your CEO patient.** Use [`executive-strategic-kit/ceo-emails/defending-the-investment.md`](../../executive-strategic-kit/ceo-emails/defending-the-investment.md) for that conversation, and be honest about timelines.
 - **It will not survive contact with a "rewrite from scratch" decision.** If your leadership is pushing for a rewrite, that's a different book and a different starter (and probably a different leadership team).
 
 ## What this starter is honest about

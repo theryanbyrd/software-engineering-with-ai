@@ -161,5 +161,5 @@ This response works because it doesn't pretend, it offers options with costs, an
 
 - `scripts/ai-readiness-audit.py` — the discipline upstream of the dashboard
 - `scripts/slop-detector.py` — automated input to metric 2 quality grading
-- `exec-kit/board-deck.pptx` — the slide deck that visualizes this dashboard
+- `executive-strategic-kit/board-deck.pptx` — the slide deck that visualizes this dashboard
 - Ch 31 — the source for everything in this template

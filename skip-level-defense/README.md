@@ -50,7 +50,7 @@ These are templates, not scripts. Adapt to your voice, your CEO's communication 
 
 ## Companion artifacts
 
-- `exec-kit/board-deck.pptx` — the four-slide quarterly board update
-- `exec-kit/ceo-emails/` — written templates for non-skip-level executive comms
+- `executive-strategic-kit/board-deck.pptx` — the four-slide quarterly board update
+- `executive-strategic-kit/ceo-emails/` — written templates for non-skip-level executive comms
 - `migration-playbooks/team-conversation-scripts.md` — overlap with §1 (pushing back on compressed timelines) and §6 (holding the line mid-migration)
 - `war-stories/` — the failure modes the templates here prevent

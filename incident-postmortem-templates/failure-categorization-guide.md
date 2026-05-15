@@ -163,7 +163,7 @@ Misdiagnosing the category leads to wasted harness investment. A constraint fail
 - Agent-ready issue templates that surface ambiguities before implementation
 - Plan-approval gates: agent produces a plan, human reviews and approves, then agent implements
 - "Inverted briefs" (per Ch 19) where the agent restates the spec back to confirm understanding
-- Tixie pattern workshops for ambiguous specs
+- Intake pattern workshops for ambiguous specs
 
 **Anti-pattern: addressing planning failure with mechanical hooks.** A hook can't determine whether the agent is solving the right problem. Plan-approval gates with human review are the durable fix.
 
@@ -201,7 +201,7 @@ After 10-20 postmortems, the team will have a category distribution that reveals
 - **>50% context failures:** Documentation / legibility investment is the highest leverage. Audit AGENTS.md, CLAUDE.md, module READMEs. Are key constraints surfaced?
 - **>50% constraint failures:** Documentation isn't binding. Add hooks, CODEOWNERS, MCP permission boundaries. Stop trying to convince the agent; restrict the agent.
 - **>50% verification failures:** Test discipline is the gap. Mutation testing, behavior-not-implementation discipline, characterization tests for legacy work.
-- **>50% planning failures:** Spec quality is the gap. Better issue templates, plan-approval gates, Tixie workshops for ambiguous specs.
+- **>50% planning failures:** Spec quality is the gap. Better issue templates, plan-approval gates, Intake workshops for ambiguous specs.
 
 Most teams find their distribution evolves quarterly. The category that dominates Q1 (often context failure at first) gets fixed; another category becomes dominant in Q3.
 

@@ -126,7 +126,7 @@ This file enumerates the forbidden categories with reasoning, real-incident refe
 **Mechanical enforcement:**
 - MCP permission separation: tools that read untrusted input run in a separate context from tools that have production access
 - Audit any new tool surface for this combination
-- The prompt-injection test suite (per `governance/prompt-injection-test-suite/`) tests these combinations explicitly
+- The prompt-injection test suite (per `prompt-injection-test-suite/`) tests these combinations explicitly
 
 ---
 
@@ -194,6 +194,6 @@ The forbidden list is about specific capabilities that produce catastrophic blas
 - [`autonomy-ladder.md`](autonomy-ladder.md) — the levels (L5 is forbidden)
 - `governance/mcp-permission-config.md` — MCP enforcement
 - `governance/hooks/` — bash firewall and other mechanical enforcement
-- `governance/prompt-injection-test-suite/` — adjacent discipline
+- `prompt-injection-test-suite/` — adjacent discipline
 - `incident-postmortem-templates/` — when a forbidden category is violated
 - Ch 32 §32.2 — source
