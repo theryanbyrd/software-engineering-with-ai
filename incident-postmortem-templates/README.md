@@ -48,7 +48,7 @@ The point of these templates is not to assign blame to AI tools or to engineers.
 - Ch 31 §31.6 — the attribution toolkit (PR tagging, six quality decay signals)
 - Ch 39 — the chapter this implements
 - `scripts/slop-detector.py` — the automated detection paired with the postmortem categorization
-- `governance/prompt-injection-test-suite/` — adjacent failure-mode discipline
+- `prompt-injection-test-suite/` — adjacent failure-mode discipline
 
 ## What these templates WILL do
 
@@ -88,6 +88,6 @@ The postmortem template references the other files. The flow during a postmortem
 
 - `scripts/slop-detector.py` — automated detection of the seven signatures
 - `skills/code-review/SKILL.md` — the canonical review discipline
-- `governance/prompt-injection-test-suite/` — adjacent failure-mode discipline
+- `prompt-injection-test-suite/` — adjacent failure-mode discipline
 - `benchmarks/` — quarterly regression testing that paths could trigger the postmortem template
 - Ch 22, 31 §31.6, 39 — the source chapters

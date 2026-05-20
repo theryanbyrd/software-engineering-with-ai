@@ -288,5 +288,5 @@ If you see these, treat as automatic findings:
 - [`data-classification-walkthrough.md`](data-classification-walkthrough.md) — what data classes apply
 - [`contract-terms-negotiation-script.md`](contract-terms-negotiation-script.md) — language to negotiate
 - [`things-vendors-wont-put-in-writing.md`](things-vendors-wont-put-in-writing.md) — verbal-only asks
-- `exec-kit/security-questionnaire-answers.md` — the inverse: when customers send YOU questionnaires
+- `executive-strategic-kit/security-questionnaire-answers.md` — the inverse: when customers send YOU questionnaires
 - Ch 38 — source

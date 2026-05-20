@@ -39,8 +39,8 @@ The runbook here is the discipline that protects you from these risks.
 
 - Ch 38 — vendor risk and procurement (the source)
 - Ch 41 — data classification context
-- `exec-kit/data-classification-matrix.xlsx` — the company-side framework
-- `exec-kit/approved-tooling-matrix-template.xlsx` — the operational matrix
+- `executive-strategic-kit/data-classification-matrix.xlsx` — the company-side framework
+- `executive-strategic-kit/approved-tooling-matrix-template.xlsx` — the operational matrix
 - `migration-playbooks/shadow-ai-to-approved-stack.md` — the cleanup playbook the procurement work prevents needing
 
 ## What this runbook WILL do
@@ -69,8 +69,8 @@ The runbook here is the discipline that protects you from these risks.
 
 ## Companion artifacts
 
-- `exec-kit/data-classification-matrix.xlsx`
-- `exec-kit/approved-tooling-matrix-template.xlsx`
-- `exec-kit/security-questionnaire-answers.md` — the questionnaire you'll be asked to answer (and that you'll ask of vendors)
+- `executive-strategic-kit/data-classification-matrix.xlsx`
+- `executive-strategic-kit/approved-tooling-matrix-template.xlsx`
+- `executive-strategic-kit/security-questionnaire-answers.md` — the questionnaire you'll be asked to answer (and that you'll ask of vendors)
 - Ch 38 — the source
 - Ch 41 — adjacent compliance context

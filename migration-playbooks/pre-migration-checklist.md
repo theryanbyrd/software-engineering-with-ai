@@ -24,7 +24,7 @@ The checklist exists because every war story in [Appendix L of the book](../war-
 ## Section 3 — Financial readiness (4 items)
 
 - [ ] **There is budget for one to two quarters of parallel licensing.** Both old and new tool licensed for the team during overlap. If you can't afford this, you can't afford the migration; see story 005.
-- [ ] **The cost dashboard exists and is up to date.** Per-team token spend, per-engineer license costs, dashboard accessible to the migration sponsor. See `exec-kit/`.
+- [ ] **The cost dashboard exists and is up to date.** Per-team token spend, per-engineer license costs, dashboard accessible to the migration sponsor. See `executive-strategic-kit/`.
 - [ ] **The CFO is briefed and in the loop on the dual-tool spend during overlap.** No surprises mid-quarter. Use the [war story 005](../war-stories/005-the-cfo-token-cap.md) as the reference for what happens otherwise.
 - [ ] **The cancellation date for the old tool is on the calendar with a 60-day buffer beyond the planned consolidation.** Buffer absorbs slippage.
 
@@ -70,6 +70,6 @@ Sometimes leadership decides to start despite a low checklist score. Push back i
 ## Companion artifacts
 
 - [`team-conversation-scripts.md`](team-conversation-scripts.md) — verbatim openers for the conversations referenced above
-- `exec-kit/90-day-plan.md` — the broader rollout plan this checklist sits inside
+- `executive-strategic-kit/90-day-plan.md` — the broader rollout plan this checklist sits inside
 - `war-stories/004-the-cursor-migration-mandate.md` — what happens when this checklist is skipped
 - `war-stories/005-the-cfo-token-cap.md` — the budget conversation gone wrong

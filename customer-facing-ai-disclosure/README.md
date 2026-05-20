@@ -6,7 +6,7 @@ The customer-comm templates for the questions enterprise customers will ask abou
 
 | File | Purpose |
 |---|---|
-| [`security-questionnaire-answers.md`](security-questionnaire-answers.md) | Comprehensive answers to the AI-tooling questions on security questionnaires (more comprehensive than the exec-kit version) |
+| [`security-questionnaire-answers.md`](security-questionnaire-answers.md) | Comprehensive answers to the AI-tooling questions on security questionnaires (more comprehensive than the executive-strategic-kit version) |
 | [`status-page-language.md`](status-page-language.md) | Customer status page language for incidents involving AI-authored code, with examples |
 | [`ai-authorship-disclosure-tos.md`](ai-authorship-disclosure-tos.md) | AI authorship disclosure language for customer contracts and ToS |
 | [`customer-conversation-scripts.md`](customer-conversation-scripts.md) | Verbatim openers for the conversations with customers' technical buyers and security teams |
@@ -58,7 +58,7 @@ The templates support different levels of disclosure for different contexts. The
 - Ch 31 §31.6 — the attribution toolkit (PR tagging, six quality decay signals)
 - Ch 38 — the procurement side (what your vendors are agreeing to with you)
 - Ch 41 — the broader governance context
-- `exec-kit/security-questionnaire-answers.md` — the original (more abbreviated) version of the questionnaire answers
+- `executive-strategic-kit/security-questionnaire-answers.md` — the original (more abbreviated) version of the questionnaire answers
 - `incident-postmortem-templates/` — the source of incident-related disclosure language
 - `vendor-procurement-runbook/` — the inverse: when YOU'RE the customer evaluating vendors
 
@@ -78,7 +78,7 @@ The templates support different levels of disclosure for different contexts. The
 
 ## Companion artifacts
 
-- `exec-kit/security-questionnaire-answers.md` — abbreviated version
+- `executive-strategic-kit/security-questionnaire-answers.md` — abbreviated version
 - `incident-postmortem-templates/` — incident response templates
 - `vendor-procurement-runbook/` — inverse perspective
 - Ch 31 §31.6, Ch 41 — sources

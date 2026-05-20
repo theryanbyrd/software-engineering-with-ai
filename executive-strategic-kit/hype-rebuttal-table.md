@@ -26,7 +26,7 @@ The discipline: have the rebuttals written down. Adapt to context. Send within h
 
 **When this comes up:** typically in headcount conversations, often with reference to a specific company that announced "we cut engineering by 50%." It is almost always an inflated public-facing number that doesn't match the internal reality. Most companies that announced large cuts in 2024-2025 quietly rehired in 2025-2026.
 
-**Pair with:** `exec-kit/ceo-emails/pushing-back-on-headcount-cut.md`. The "pick one" framing is load-bearing — the CEO must commit to either smaller team OR faster delivery, not both.
+**Pair with:** `executive-strategic-kit/ceo-emails/pushing-back-on-headcount-cut.md`. The "pick one" framing is load-bearing — the CEO must commit to either smaller team OR faster delivery, not both.
 
 ### Hype claim 2 — "We don't need to invest in tools/training, the model just gets better"
 
@@ -157,8 +157,8 @@ The CEO is processing the same noise everyone is. They are looking to you to fil
 - [`realistic-roi-message.md`](realistic-roi-message.md) — the positive case to pair with rebuttals
 - [`what-number-do-i-commit-to.md`](what-number-do-i-commit-to.md) — the commitment framework
 - [`eleven-pm-podcast-clip-protocol.md`](eleven-pm-podcast-clip-protocol.md) — adjacent
-- `exec-kit/ceo-emails/pushing-back-on-headcount-cut.md` — operational template
-- `exec-kit/ceo-emails/podcast-clip-reply.md` — operational template
+- `executive-strategic-kit/ceo-emails/pushing-back-on-headcount-cut.md` — operational template
+- `executive-strategic-kit/ceo-emails/podcast-clip-reply.md` — operational template
 - `vendor-procurement-runbook/renewal-discipline.md` — adjacent
 - `failed-one-shot-triage/` — adjacent (the Train bucket evidence)
 - `prompt-injection-test-suite/` — adjacent (the security evidence)

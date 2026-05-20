@@ -186,7 +186,7 @@ The conversation rarely ends with the CEO satisfied. It often ends with "okay, l
 
 - [`six-metric-dashboard-explainer.md`](six-metric-dashboard-explainer.md) — the dashboard structure
 - [`reading-list/`](../reading-list/) — for citing METR, DORA, DX with current links
-- `exec-kit/board-deck.pptx` — for the board variant of this conversation
+- `executive-strategic-kit/board-deck.pptx` — for the board variant of this conversation
 - `war-stories/002-the-twelve-percent-plateau.md` — the failure mode this template prevents
 - Ch 31 §31.1 — the metrics
 - Ch 49 §49.2 — the empirical sources

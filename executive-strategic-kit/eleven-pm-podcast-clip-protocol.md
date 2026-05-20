@@ -241,6 +241,6 @@ What failure looks like:
 - [`hype-rebuttal-table.md`](hype-rebuttal-table.md) — the rebuttals to use in morning follow-ups
 - [`realistic-roi-message.md`](realistic-roi-message.md) — the numbers to anchor in
 - [`what-number-do-i-commit-to.md`](what-number-do-i-commit-to.md) — for when CEO pushes for new commitments
-- `exec-kit/ceo-emails/podcast-clip-reply.md` — the operational template
+- `executive-strategic-kit/ceo-emails/podcast-clip-reply.md` — the operational template
 - `skip-level-defense/no-the-model-release-didnt-change-our-strategy.md` — adjacent
 - Ch 52 §52.4 — source

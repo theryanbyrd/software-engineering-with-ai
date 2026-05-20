@@ -1,0 +1,73 @@
+name: Reading List — Stale Entry Check
+
+on:
+  schedule:
+    # Every Monday at 14:00 UTC (Pacific morning)
+    - cron: '0 14 * * 1'
+  workflow_dispatch:
+
+jobs:
+  check-stale:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run stale check
+        id: stale
+        run: |
+          python3 reading-list/scripts/generate.py --check-stale > stale-report.txt 2>&1 || echo "stale_found=1" >> $GITHUB_ENV
+          {
+            echo 'report<<EOF_REPORT'
+            cat stale-report.txt
+            echo EOF_REPORT
+          } >> $GITHUB_OUTPUT
+      - name: Open issue if stale entries found
+        if: env.stale_found == '1'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('stale-report.txt', 'utf8');
+            const today = new Date().toISOString().slice(0, 10);
+            // Look for an existing open issue for this report
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'reading-list-stale'
+            });
+            const title = `Reading list — stale entries detected (week of ${today})`;
+            const body = [
+              'The weekly stale check found reading-list entries within 60 days of their `dated_through` (or past it).',
+              '',
+              'Action: review the entries listed below, refresh them if still relevant, or move them to `_retired`.',
+              '',
+              '```',
+              report.trim(),
+              '```',
+              '',
+              'This issue is opened automatically by `.github/workflows/reading-list-stale.yml`.'
+            ].join('\n');
+            if (issues.data.length === 0) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['reading-list-stale', 'maintenance']
+              });
+            } else {
+              // Append a comment with the new report rather than spamming new issues
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issues.data[0].number,
+                body: `Stale check ran ${today}:\n\n\`\`\`\n${report.trim()}\n\`\`\``
+              });
+            }

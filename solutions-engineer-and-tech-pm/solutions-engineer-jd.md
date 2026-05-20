@@ -30,7 +30,7 @@ We are not hiring you to do demos. We are hiring you to write working code in cu
 
 - **Pre-sales technical work.** Discovery calls with the customer's engineering and architecture leads. Identify what they actually need vs. what the salesperson heard. Translate to specific scope.
 - **POCs and integrations.** Write working code — sometimes in our SDK, sometimes in their codebase, sometimes glue between systems. The code is real, gets reviewed by real engineers, and ships. Not toy demos.
-- **Workshop the spec.** Run executable-spec workshops with the customer's team using the [Tixie pattern](../../skills/) or your team's equivalent. The output is a spec the customer's engineers can hand to an agent and ship.
+- **Workshop the spec.** Run executable-spec workshops with the customer's team using the [Intake pattern](../../skills/) or your team's equivalent. The output is a spec the customer's engineers can hand to an agent and ship.
 - **Co-design with our engineering.** When the customer needs a feature we don't have, you're the bridge. You translate the customer's domain into the language of our engineering team's roadmap. Your specs land in our backlog when warranted.
 - **Hand off cleanly.** Once the customer's team is ramped, you hand off to Customer Success. The handoff is documentation the CS team can act on, not "you'll figure it out."
 

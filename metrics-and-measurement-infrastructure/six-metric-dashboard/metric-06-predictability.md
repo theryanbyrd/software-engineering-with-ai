@@ -126,7 +126,7 @@ The ">0.95 investigate" anchor is important. A team that always hits its commitm
 
 In the AI context, the common causes:
 
-1. **Spec quality is highly variable.** Some tickets are agent-ready; others are vague prose. The agent crushes the first and stalls on the second. Variance shoots up. The fix is the Tixie pattern from Ch 19 §19.5 — an AI ticket-writing assistant that levels up spec quality.
+1. **Spec quality is highly variable.** Some tickets are agent-ready; others are vague prose. The agent crushes the first and stalls on the second. Variance shoots up. The fix is the Intake pattern from Ch 19 §19.5 — an AI ticket-writing assistant that levels up spec quality.
 2. **Scope creep mid-sprint.** AI capability emboldens the team to take on adjacent work mid-sprint. Some sprints they finish; others they don't. The fix is sprint-scope discipline.
 3. **Estimation hasn't been re-calibrated.** The team is still sizing tickets at pre-AI scale. AI-friendly work delivers faster than estimated; AI-dangerous work delivers slower. Re-calibrate.
 4. **One or two ICs operating at very different productivity levels.** Aggregate team metric obscures this; per-engineer load distribution might be skewed. Diagnose in 1:1s, never in dashboards.

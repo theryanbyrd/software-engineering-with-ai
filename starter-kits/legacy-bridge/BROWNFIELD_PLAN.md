@@ -141,4 +141,4 @@ This is not where you "modernize" the legacy code. This is where you BUILD ALONG
 - Most of the codebase under harness. That's months 4-12 (and beyond).
 - Dramatic productivity gains. Realistic 90-day gains in legacy are 5-8% on tier-2 work in the hardened module.
 
-If your leadership expects more than this in 90 days, the conversation that needs to happen is not "how do we go faster" but "what is realistic." Use [`exec-kit/ceo-emails/defending-the-investment.md`](../../exec-kit/ceo-emails/defending-the-investment.md) as a starting point.
+If your leadership expects more than this in 90 days, the conversation that needs to happen is not "how do we go faster" but "what is realistic." Use [`executive-strategic-kit/ceo-emails/defending-the-investment.md`](../../executive-strategic-kit/ceo-emails/defending-the-investment.md) as a starting point.

@@ -164,7 +164,7 @@ The framework should evolve. Pin it to a specific version (e.g., "Disclosure Fra
 - [`status-page-language.md`](status-page-language.md) — Layer 4 detail
 - [`ai-authorship-disclosure-tos.md`](ai-authorship-disclosure-tos.md) — Layer 1 detail
 - [`customer-conversation-scripts.md`](customer-conversation-scripts.md) — Layer 3 conversations
-- `exec-kit/` — internal artifacts the disclosure references
+- `executive-strategic-kit/` — internal artifacts the disclosure references
 - Ch 31 §31.6, Ch 41 — sources
 
 ## Reminder

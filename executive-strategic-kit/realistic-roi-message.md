@@ -52,7 +52,7 @@ The most aggressive number in the set. Calibrated to:
 - Prototype-first discovery (per Ch 38) — not waterfall execution
 
 The "25-40%" is achievable when:
-- Specs are sharp (per the Tixie pattern)
+- Specs are sharp (per the Intake pattern)
 - Harness is mature
 - Prototype iterations are short
 - Reviews are paced with throughput
@@ -203,5 +203,5 @@ Mitigation: don't compromise on the floor of defensibility. The 8-20% range is t
 - [`four-slide-board-deck-walkthrough.md`](four-slide-board-deck-walkthrough.md) — the deck
 - [`worked-examples-as-case-studies.md`](worked-examples-as-case-studies.md) — making it concrete
 - `metrics-and-measurement-infrastructure/` — the dashboard the commitment references
-- `exec-kit/roi-calculator.xlsx` — the operational tool for filling in numbers
+- `executive-strategic-kit/roi-calculator.xlsx` — the operational tool for filling in numbers
 - Ch 46 §46.2 — source

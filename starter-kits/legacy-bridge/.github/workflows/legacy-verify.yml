@@ -38,7 +38,7 @@ jobs:
           python-version: '3.11'
       - name: Run AI readiness audit
         run: |
-          curl -sL https://raw.githubusercontent.com/ryanbyrd/ai-engineering-handbook/main/scripts/ai-readiness-audit.py -o /tmp/audit.py || cp ../../scripts/ai-readiness-audit.py /tmp/audit.py
+          curl -sL https://raw.githubusercontent.com/theryanbyrd/software-engineering-with-ai/main/scripts/ai-readiness-audit.py -o /tmp/audit.py || cp ../../scripts/ai-readiness-audit.py /tmp/audit.py
           python3 /tmp/audit.py . --threshold 50    # Lower threshold for brownfield; aim is to track upward over time
       - uses: actions/upload-artifact@v4
         if: always()

@@ -148,7 +148,7 @@ Auditors, regulators, and litigation will eventually probe this. The contract la
 - [`disclosure-decision-framework.md`](disclosure-decision-framework.md) — when to disclose what
 - [`customer-conversation-scripts.md`](customer-conversation-scripts.md) — for the live conversation
 - `vendor-procurement-runbook/contract-terms-negotiation-script.md` — the vendor-side counterpart
-- `exec-kit/data-classification-matrix.xlsx` — the internal data classification this contract language references
+- `executive-strategic-kit/data-classification-matrix.xlsx` — the internal data classification this contract language references
 - Ch 31 §31.6, Ch 41 — sources
 
 ## Reminder

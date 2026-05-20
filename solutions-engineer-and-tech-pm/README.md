@@ -7,7 +7,7 @@ The convergence material for Ch 42 §42.5: how Solutions Engineer (SE) and Techn
 > Two roles that were drifting apart pre-AI are now converging:
 >
 > - **Solutions Engineers** (in customer-facing teams) increasingly write working code in customer environments. The line between SE and engineer blurs. They need real engineering skills, not just product knowledge.
-> - **Tech PMs** increasingly write executable specs (Chapter 4), workshop them with the Tixie pattern (Chapter 19), and ship features with light engineering involvement on bounded T1/T2 work. The line between PM and engineer blurs in the other direction.
+> - **Tech PMs** increasingly write executable specs (Chapter 4), workshop them with the Intake pattern (Chapter 19), and ship features with light engineering involvement on bounded T1/T2 work. The line between PM and engineer blurs in the other direction.
 >
 > The implication: these roles are becoming part of the engineering competency ladder, not adjacent to it. Hire and compensate accordingly.
 >
@@ -37,7 +37,7 @@ The artifacts here are the operational implementation: updated JDs, new intervie
 
 - Ch 42 §42.5 — the source
 - Ch 4 — what an executable spec looks like
-- Ch 19 — the Tixie workshop pattern
+- Ch 19 — the Intake workshop pattern
 - `people/jds/senior-engineer-ai-native.md` — the engineering JD this converges with
 
 ## What this is NOT

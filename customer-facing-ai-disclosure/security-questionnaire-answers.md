@@ -1,6 +1,6 @@
 # Security Questionnaire Answers — Comprehensive Version
 
-The comprehensive answers to AI-related questions on enterprise customer security questionnaires. More detailed than the version in `exec-kit/security-questionnaire-answers.md` because some customers ask deeper.
+The comprehensive answers to AI-related questions on enterprise customer security questionnaires. More detailed than the version in `executive-strategic-kit/security-questionnaire-answers.md` because some customers ask deeper.
 
 ## How to use this document
 
@@ -345,5 +345,5 @@ Per Ch 52 §52.6's framing for skip-level conversations and per Ch 31 §31.6's P
 - [`status-page-language.md`](status-page-language.md) — for incident-related disclosure
 - [`ai-authorship-disclosure-tos.md`](ai-authorship-disclosure-tos.md) — contract-level language
 - [`disclosure-decision-framework.md`](disclosure-decision-framework.md) — when to disclose what
-- `exec-kit/security-questionnaire-answers.md` — abbreviated version
+- `executive-strategic-kit/security-questionnaire-answers.md` — abbreviated version
 - Ch 31 §31.6, Ch 38, Ch 41 — sources

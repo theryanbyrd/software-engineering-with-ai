@@ -248,6 +248,6 @@ The action items section in the postmortem should always reduce to specific, nam
 - [`postmortem-template.md`](postmortem-template.md) — the template that uses this checklist
 - [`SLOP_SIGNATURE_REFERENCE.md`](SLOP_SIGNATURE_REFERENCE.md) — what to fix
 - [`failure-categorization-guide.md`](failure-categorization-guide.md) — why you're fixing it
-- `governance/prompt-injection-test-suite/` — adjacent harness discipline
+- `prompt-injection-test-suite/` — adjacent harness discipline
 - `skills/` — the skill library this checklist references
 - Ch 39 §39.3 — the source

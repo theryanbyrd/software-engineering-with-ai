@@ -101,7 +101,7 @@ The bucket that names a spec-quality gap. The action:
 
 - In 1:1 (NOT publicly): walk the spec author through what was missing
 - Update the team's spec template / examples to address the pattern
-- Consider the "Tixie" ticket-writing assistant pattern from Ch 19 §19.5
+- Consider the "Intake" ticket-writing assistant pattern from Ch 19 §19.5
 
 ## Reading the ratios over time
 

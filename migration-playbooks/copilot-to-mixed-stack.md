@@ -165,6 +165,6 @@ Ops-heavy teams often get the most from agentic tools (multi-step infra changes,
 
 - `skills/` — starter skills for the new tool
 - [`team-conversation-scripts.md`](team-conversation-scripts.md) §4
-- `exec-kit/approved-tooling-matrix-template.xlsx` — for the data classification side
+- `executive-strategic-kit/approved-tooling-matrix-template.xlsx` — for the data classification side
 - `benchmarks/` — to verify quality and detect regressions
-- `governance/prompt-injection-test-suite/` — verify the new tool's harness security
+- `prompt-injection-test-suite/` — verify the new tool's harness security

@@ -4,7 +4,7 @@ What each slide should say, what NOT to add. Per Ch 52 §52.1:
 
 > Resist the urge to add slides. The board does not want more detail. The board wants confidence that you have a clear plan and honest numbers.
 
-This file is the substance behind `exec-kit/board-deck-template.pptx`. The template gives you the shell; this gives you what to put in it.
+This file is the substance behind `executive-strategic-kit/board-deck-template.pptx`. The template gives you the shell; this gives you what to put in it.
 
 ## The four slides
 
@@ -219,6 +219,6 @@ Mitigation: the four-slide structure is durable; the substance evolves. Each qua
 - [`what-number-do-i-commit-to.md`](what-number-do-i-commit-to.md) — slide 2 numbers
 - [`hype-rebuttal-table.md`](hype-rebuttal-table.md) — for board questions about hype
 - [`worked-examples-as-case-studies.md`](worked-examples-as-case-studies.md) — for board questions about concreteness
-- `exec-kit/board-deck-template.pptx` — the operational template
+- `executive-strategic-kit/board-deck-template.pptx` — the operational template
 - `metrics-and-measurement-infrastructure/reference-executive-dashboard.md` — the dashboard slide 3 references
 - Ch 52 §52.1 — source

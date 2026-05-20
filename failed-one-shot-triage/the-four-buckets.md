@@ -160,7 +160,7 @@ Train failures are the team's spec-writing skill made visible. Each Train is a c
 3. Use the coaching to inform the team's spec template / examples
 4. The team's spec quality rises over time
 
-Per Ch 19 §19.5, the ticket-writing assistant ("Tixie pattern") is one operational mitigation: an AI that workshops specs with PMs surfaces these gaps before the spec hits the implementing agent.
+Per Ch 19 §19.5, the ticket-writing assistant ("Intake pattern") is one operational mitigation: an AI that workshops specs with PMs surfaces these gaps before the spec hits the implementing agent.
 
 ## Distinguishing the buckets in practice
 
