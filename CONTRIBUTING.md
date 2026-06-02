@@ -9,7 +9,7 @@ Every contribution that adds a new artifact starts from a template. The template
 | Adding... | Template | What the template enforces |
 |---|---|---|
 | A new skill | [`skills/_TEMPLATE.md`](skills/_TEMPLATE.md) | SKILL.md structure, working example invocation, the skill-linter pass |
-| A new subagent | [`agents/_TEMPLATE.md`](agents/_TEMPLATE.md) *(forthcoming)* | Tight role definition, tool allowlist, "I am done" contract, no-self-congratulation clause |
+| A new subagent | [`subagents/_TEMPLATE.md`](subagents/_TEMPLATE.md) | Tight role definition, tool allowlist, "I am done" contract, no-self-congratulation clause |
 | A new hook | [`hooks/_TEMPLATE.sh`](hooks/_TEMPLATE.sh) *(forthcoming)* | `_tests/` file, documented threat model, performance budget |
 | A new war story | [`war-stories/_TEMPLATE.md`](war-stories/_TEMPLATE.md) | Anonymization checklist, root-cause framing, what-we-changed-after section |
 | A new prompt-injection test case | [`prompt-injection-test-suite/test-cases/_TEMPLATE.md`](prompt-injection-test-suite/test-cases/_TEMPLATE.md) | Scenario, fixture, pass criterion, threat model |

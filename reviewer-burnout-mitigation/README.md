@@ -104,7 +104,7 @@ With explicit mitigation:
 
 | Need | Where to look |
 |---|---|
-| Building the AI reviewer subagent | `governance/subagents/` |
+| Building the AI reviewer subagent | `subagents/` |
 | Slop signature detection (subagent input) | Ch 22 §22.2; `governance/hooks/slop-detector.py` |
 | Per-PR cost tracking (review minutes adjacent) | `cost-discipline-runbook/cost-attribution-per-pr.md` |
 | Review patterns | Ch 22 |
@@ -136,7 +136,7 @@ The mitigations have real costs (slower reviews; more friction). They're worth i
 
 ## Companion artifacts
 
-- `governance/subagents/` — adjacent (AI reviewer)
+- `subagents/` — adjacent (AI reviewer)
 - Ch 22 §22.2 — slop signatures (subagent input)
 - `failed-one-shot-triage/` — adjacent
 - `promotion-and-leveling-rubric/` — adjacent
