@@ -1,0 +1,8 @@
+node_modules/
+.next/
+dist/
+.env
+*.tfstate
+*.tfstate.*
+.terraform/
+tf.plan

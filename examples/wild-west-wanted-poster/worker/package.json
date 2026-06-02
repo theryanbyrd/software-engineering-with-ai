@@ -1,0 +1,31 @@
+{
+  "name": "wwwp-worker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SQS long-poll consumer that turns uploaded portraits into Old-West WANTED posters (wwwp).",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "reset-monthly": "tsx src/monthly-reset.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.624.0",
+    "@aws-sdk/client-sesv2": "^3.624.0",
+    "@aws-sdk/client-sqs": "^3.624.0",
+    "@google/genai": "^0.3.0",
+    "pg": "^8.12.0",
+    "sharp": "^0.33.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/pg": "^8.11.6",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.0"
+  }
+}

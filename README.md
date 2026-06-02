@@ -147,7 +147,7 @@ The full directory tree, grouped by purpose. Three sentences per area. Click thr
 | Directory | What's there |
 |---|---|
 | [`docs/`](docs/) | Longer-form guides — the 90-day playbook, legacy-migration walkthrough, measurement-dashboard wiring, certification curriculum, plugin marketplace guide. Some entries are stubbed in v2026.q3 and fill out in v2026.q4. |
-| [`examples/`](examples/) | Stubbed. Working end-to-end examples land in v2026.q4. The starter kits are the closest thing for now. |
+| [`examples/`](examples/) | Worked end-to-end examples. Includes [`wild-west-wanted-poster/`](examples/wild-west-wanted-poster/) — a complete greenfield AI SaaS built from scratch (domain, Terraform/AWS, Next.js app, queue worker, Stripe, Gemini, admin, freemium). The book's Ch 47 worked example. |
 | [`tools/`](tools/) | Reusable GitHub Actions, editor configs. |
 
 ---
@@ -212,6 +212,7 @@ The audit script also runs in CI against this repo's own starter kits — see [`
 | Ch 38 — Vendor risk | [`vendor-procurement-runbook/`](vendor-procurement-runbook/) |
 | Ch 39 — Incident response | [`incident-postmortem-templates/`](incident-postmortem-templates/) |
 | Ch 44 — Certification curriculum | [`ai-tooling-onboarding-curriculum/`](ai-tooling-onboarding-curriculum/) |
+| Ch 47 — Worked end-to-end examples | [`examples/wild-west-wanted-poster/`](examples/wild-west-wanted-poster/) |
 | Ch 43.6 — The IC perspective (running agents) | [`docs/ic-perspective-running-agents.md`](docs/ic-perspective-running-agents.md) |
 | Ch 47.5 — AI in non-coding engineering work | [`docs/ai-in-non-coding-engineering-work.md`](docs/ai-in-non-coding-engineering-work.md) |
 | Ch 50.5 — What I might be wrong about | [`docs/what-i-might-be-wrong-about.md`](docs/what-i-might-be-wrong-about.md) |
