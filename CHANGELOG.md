@@ -1,5 +1,28 @@
 # Changelog
 
+## Unreleased — Sync to book *revised v15*
+
+Companion-repo sync against the book manuscript revised v15. Full audit:
+[`docs/book-sync-audit-v15.md`](docs/book-sync-audit-v15.md).
+
+### Added — Appendix artifacts the book promised but were missing
+- `scorecard/ai-readiness.xlsx` + `scorecard/README.md` (Appendix H) — fillable scorecard, same 23 criteria/weights as the audit script.
+- `checklists/code-smells.md` (Appendix I) and `checklists/test-review.md` (Appendix K), with `checklists/README.md`.
+- `prompts/` (Appendix J) — prompt pattern library: agent-ready issue, information-requirements, plan→implement→review, independent verification, slop review, task decomposition.
+- `benchmarks/local-llms-current-state/` (Ch 28 §28.3) — durable principle + dated-snapshot structure for the perishable local-LLM specifics.
+
+### Added — v15 revised chapters
+- `do-not-automate-catalog/net-negative-domains.md` (Ch 33.5) — six domains where AI is currently a net negative, plus the "this list will shrink" trajectory.
+- `docs/ai-in-non-coding-engineering-work.md` (Ch 47.5), `docs/ic-perspective-running-agents.md` (Ch 43.6), `docs/what-i-might-be-wrong-about.md` (Ch 50.5).
+
+### Added — scripts referenced by the README/CONTRIBUTING but missing
+- `scripts/token-cost-estimator.py` (Ch 26/29), `scripts/pr-ai-tagger.py` (Ch 21/31 §31.6), `scripts/llms-txt-generator.py` (Ch 6 §6.5.3), `scripts/skill-linter.py` (CONTRIBUTING quality bar). All run; `skill-linter` passes on all 12 skills.
+
+### Changed
+- Renamed `agents/` → `subagents/` to match the book's `/subagents/` path (Appendix F, Ch 14). Updated all references in README and CONTRIBUTING and fixed stale `governance/subagents/` pointers in four directory READMEs.
+- README "Book → folder map" extended with Appendices I/J/K, Ch 28, and the v15 sub-chapters (33.5, 43.6, 47.5, 50.5); Appendix H now lists both the xlsx and the script.
+- Removed inaccurate "(forthcoming)" note on `subagents/_TEMPLATE.md` (it exists).
+
 ## v2026.q3 (May 2026) — initial release
 
 ### Added — Core

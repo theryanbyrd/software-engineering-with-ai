@@ -43,7 +43,7 @@ npm install
 npm run verify  # should pass on a fresh clone
 ```
 
-Then read [`skills/`](skills/), [`agents/`](agents/), and [`hooks/`](hooks/). Wire [`scripts/ai-readiness-audit.py`](scripts/ai-readiness-audit.py) into your CI as a GitHub Action so every PR shows a score against the book's standards. The reusable audit workflow is at [`.github/workflows/audit.yml`](.github/workflows/audit.yml) — copy it into your repo.
+Then read [`skills/`](skills/), [`subagents/`](subagents/), and [`hooks/`](hooks/). Wire [`scripts/ai-readiness-audit.py`](scripts/ai-readiness-audit.py) into your CI as a GitHub Action so every PR shows a score against the book's standards. The reusable audit workflow is at [`.github/workflows/audit.yml`](.github/workflows/audit.yml) — copy it into your repo.
 
 **Time to working harness:** 5 minutes for the starter kit. **Time to integrated CI audit:** 1 hour.
 
@@ -81,8 +81,11 @@ The full directory tree, grouped by purpose. Three sentences per area. Click thr
 |---|---|
 | [`templates/`](templates/) | Single-file templates from the book's appendices. CLAUDE.md, AGENTS.md, the agent-ready issue template (Appendix C), and the PR template for AI-authored code (Appendix D). Copy-paste into a greenfield repo. |
 | [`skills/`](skills/) | The twelve starter skills (Appendix E). Add API endpoint, write tests, refactor safely, code review, db migration, dependency upgrade, frontend component, incident fix, observability change, performance review, security review, bug reproduction. Each has its own README and a SKILL.md. |
-| [`agents/`](agents/) | The starter subagent roster (Appendix F). Planner, test-writer, reviewer — each with tight role definitions, tool allowlists, and the no-self-congratulation clause (Ch 2 §2.1a). |
+| [`subagents/`](subagents/) | The starter subagent roster (Appendix F). Planner, test-writer, reviewer — each with tight role definitions, tool allowlists, and the no-self-congratulation clause (Ch 2 §2.1a). |
 | [`hooks/`](hooks/) | Starter hook library (Appendix G). Bash firewall, protected-paths enforcement, post-edit format. Each comes with tests and a documented threat model. |
+| [`scorecard/`](scorecard/) | The AI-readiness scorecard (Appendix H) as a fillable `ai-readiness.xlsx` — the manual counterpart to `scripts/ai-readiness-audit.py`. Same criteria, categories, and weights. |
+| [`checklists/`](checklists/) | The AI code-smell checklist (Appendix I, the seven slop signatures) and the AI-generated-test review checklist (Appendix K). Print-and-keep review aids. |
+| [`prompts/`](prompts/) | The prompt pattern library (Appendix J). Durable, model-portable prompt shapes: agent-ready issue, information-requirements, plan→implement→review, independent verification, slop review, task decomposition. |
 
 ### Strategic / executive
 
@@ -191,22 +194,27 @@ The audit script also runs in CI against this repo's own starter kits — see [`
 | Ch 7 — Verify Command | [`starter-kits/*/scripts/verify.sh`](starter-kits/) |
 | Ch 11 §11.6 — Brownfield MVH | [`starter-kits/legacy-bridge/`](starter-kits/) |
 | Ch 13 — Skills | [`skills/`](skills/), [`starter-kits/*/.claude/skills/`](starter-kits/) |
-| Ch 14 — Subagents | [`agents/`](agents/) |
+| Ch 14 — Subagents | [`subagents/`](subagents/) |
 | Ch 15 — Hooks | [`hooks/`](hooks/) |
 | Ch 18 — Plugins guide | [`docs/plugin-marketplace.md`](docs/plugin-marketplace.md) |
 | Ch 19 — Intake pattern | [`solutions-engineer-and-tech-pm/`](solutions-engineer-and-tech-pm/) |
 | Ch 22 — Code review (slop signatures) | [`scripts/slop-detector.py`](scripts/), [`code-review-craft-workshop/`](code-review-craft-workshop/) |
 | Ch 26 — Cost discipline | [`scripts/token-cost-estimator.py`](scripts/), [`cost-discipline-runbook/`](cost-discipline-runbook/) |
+| Ch 28 — Cost optimization with local LLMs | [`benchmarks/local-llms-current-state/`](benchmarks/local-llms-current-state/) |
 | Ch 29 — Cost gateway | [`docs/measurement-dashboards/`](docs/measurement-dashboards/) |
 | Ch 30 — Approved tooling matrix | [`executive-strategic-kit/approved-tooling-matrix-template.md`](executive-strategic-kit/approved-tooling-matrix-template.md) |
 | Ch 31 — Metrics + attribution toolkit | [`metrics-and-measurement-infrastructure/`](metrics-and-measurement-infrastructure/) |
 | Ch 32 — Autonomy ladder | [`agent-autonomy-levels/`](agent-autonomy-levels/) |
 | Ch 33 — Do-Not-Automate | [`do-not-automate-catalog/`](do-not-automate-catalog/) |
+| Ch 33.5 — Domains where AI is net-negative | [`do-not-automate-catalog/net-negative-domains.md`](do-not-automate-catalog/net-negative-domains.md) |
 | Ch 34 — Data classification | [`executive-strategic-kit/data-classification-matrix.md`](executive-strategic-kit/data-classification-matrix.md) |
 | Ch 36–37 — Prompt injection | [`prompt-injection-test-suite/`](prompt-injection-test-suite/) |
 | Ch 38 — Vendor risk | [`vendor-procurement-runbook/`](vendor-procurement-runbook/) |
 | Ch 39 — Incident response | [`incident-postmortem-templates/`](incident-postmortem-templates/) |
 | Ch 44 — Certification curriculum | [`ai-tooling-onboarding-curriculum/`](ai-tooling-onboarding-curriculum/) |
+| Ch 43.6 — The IC perspective (running agents) | [`docs/ic-perspective-running-agents.md`](docs/ic-perspective-running-agents.md) |
+| Ch 47.5 — AI in non-coding engineering work | [`docs/ai-in-non-coding-engineering-work.md`](docs/ai-in-non-coding-engineering-work.md) |
+| Ch 50.5 — What I might be wrong about | [`docs/what-i-might-be-wrong-about.md`](docs/what-i-might-be-wrong-about.md) |
 | Ch 51 — 90-day plan | [`executive-strategic-kit/90-day-plan.md`](executive-strategic-kit/90-day-plan.md) |
 | Ch 52 — CEO/board kit | [`executive-strategic-kit/board-deck-template.md`](executive-strategic-kit/board-deck-template.md), [`executive-strategic-kit/ceo-emails/`](executive-strategic-kit/ceo-emails/) |
 | Ch 53 — Migration playbooks | [`migration-playbooks/`](migration-playbooks/) |
@@ -219,9 +227,12 @@ The audit script also runs in CI against this repo's own starter kits — see [`
 | Appendix C — Agent-ready issue | [`templates/agent-ready-issue.md`](templates/agent-ready-issue.md) |
 | Appendix D — PR template | [`templates/pr-template.md`](templates/pr-template.md) |
 | Appendix E — 12 starter skills | [`skills/`](skills/) |
-| Appendix F — Subagent library | [`agents/`](agents/) |
+| Appendix F — Subagent library | [`subagents/`](subagents/) |
 | Appendix G — Hook library | [`hooks/`](hooks/) |
-| Appendix H — Readiness scorecard | [`scripts/ai-readiness-audit.py`](scripts/ai-readiness-audit.py) |
+| Appendix H — Readiness scorecard | [`scorecard/ai-readiness.xlsx`](scorecard/) (fillable) + [`scripts/ai-readiness-audit.py`](scripts/ai-readiness-audit.py) (automated) |
+| Appendix I — AI code smell checklist | [`checklists/code-smells.md`](checklists/code-smells.md) |
+| Appendix J — Prompt pattern library | [`prompts/`](prompts/) |
+| Appendix K — AI test review checklist | [`checklists/test-review.md`](checklists/test-review.md) |
 | Appendix L — War stories (book version) | [`war-stories/`](war-stories/) |
 
 ---
@@ -249,7 +260,7 @@ The patterns transfer across stacks. The plumbing differs. Don't wait for your s
 PRs welcome. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the quality bar. Specific templates to start from are linked in CONTRIBUTING.md — one of:
 
 - [`skills/_TEMPLATE.md`](skills/_TEMPLATE.md) — new skill
-- [`agents/_TEMPLATE.md`](agents/_TEMPLATE.md) — new subagent (forthcoming)
+- [`subagents/_TEMPLATE.md`](subagents/_TEMPLATE.md) — new subagent
 - [`hooks/_TEMPLATE.sh`](hooks/_TEMPLATE.sh) — new hook (forthcoming)
 - [`war-stories/_TEMPLATE.md`](war-stories/_TEMPLATE.md) — new war story
 - [`prompt-injection-test-suite/test-cases/_TEMPLATE.md`](prompt-injection-test-suite/test-cases/_TEMPLATE.md) — new prompt-injection test case

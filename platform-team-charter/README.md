@@ -68,7 +68,7 @@ The charter encoded here addresses both: platform is a real team with real produ
 |---|---|
 | Skills library (the team's primary product) | `skills/` |
 | Hooks library | `governance/hooks/` |
-| Subagent library | `governance/subagents/` |
+| Subagent library | `subagents/` |
 | Migration playbooks the platform team executes | `migration-playbooks/` |
 | Platform team's own promotion criteria | `promotion-and-leveling-rubric/` (this round) |
 | Onboarding for new platform engineers | (referenced but not yet built — adjacent to `legacy-codebase-onboarding/`) |

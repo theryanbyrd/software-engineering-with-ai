@@ -37,7 +37,7 @@ Focused on the skills, subagents, hooks the engineer is exercising:
 ### Day 2 reading
 
 - The README for each skill the engineer is touring
-- The team's subagent documentation (or `governance/subagents/` README equivalent)
+- The team's subagent documentation (or `subagents/` README equivalent)
 - The team's hook documentation
 
 ### Day 3 reading

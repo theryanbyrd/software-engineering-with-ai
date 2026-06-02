@@ -89,7 +89,7 @@ Per `agent-autonomy-levels/forbidden-categories.md` Category 6 ("Tool configurat
 | The L5 forbidden categories that injection threatens | `agent-autonomy-levels/forbidden-categories.md` |
 | MCP permission boundaries that are part of the defense | `governance/mcp-permission-config.md` |
 | Bash firewall as another part of the defense | `governance/hooks/` |
-| Subagents that detect suspicious agent behavior | `governance/subagents/` |
+| Subagents that detect suspicious agent behavior | `subagents/` |
 | Postmortem template for prompt-injection incidents | `incident-postmortem-templates/` |
 | Cost incident runbook (some injection attacks produce cost spikes) | `cost-discipline-runbook/cost-blowup-incident-runbook.md` |
 
