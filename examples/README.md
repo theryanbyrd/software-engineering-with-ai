@@ -2,7 +2,17 @@
 
 This directory is reserved for fully-working example repositories that exercise the harness end-to-end. The current canonical "working examples" are the starter kits in [`../starter-kits/`](../starter-kits/), which are intentionally minimal but fork-ready.
 
-Status: the longer-form examples (a real bug fix walked through with the harness, a real refactor, a real incident response) are forthcoming in `v2026.q4`. If you have an anonymizable working example you'd like to contribute, see [`../CONTRIBUTING.md`](../CONTRIBUTING.md).
+## Available now
+
+- **[`wild-west-wanted-poster/`](wild-west-wanted-poster/) — a complete greenfield SaaS, built from scratch.** Upload a photo → AI Old-West wanted poster; freemium (5 free/month, $1 = 10 credits). It exercises every load-bearing part of a real product: domain + DNS, Terraform/AWS (VPC, ECS Fargate, RDS Postgres, S3, SQS, SES, Secrets Manager, EventBridge cron), a Next.js app, a queue worker, Stripe payments, and Gemini image generation — with an event-sourced credit ledger and human-gated money/secrets. Start at its [`README.md`](wild-west-wanted-poster/README.md) (the worked-example chapter for Ch 47).
+
+Other longer-form examples (a real bug fix, a refactor, an incident response) are forthcoming. If you have an anonymizable working example to contribute, see [`../CONTRIBUTING.md`](../CONTRIBUTING.md).
+
+## Shipped
+
+| Example | What it demonstrates | Status |
+|---|---|---|
+| [`wild-west-wanted-poster/`](wild-west-wanted-poster/) | Full greenfield SaaS from scratch: domain, Terraform/AWS, app, queue/worker, Stripe, Gemini, admin, freemium | **shipped** |
 
 ## Planned examples
 

@@ -1,0 +1,42 @@
+# terraform.tfvars.example — Copy to terraform.tfvars and fill in. NEVER commit real secrets here.
+# (Ch. "Cost Discipline & State"). Secret *values* go into Secrets Manager out-of-band (see secrets.tf).
+
+aws_region  = "us-west-2"
+environment = "prod"
+
+domain_name = "wildwestwanted.com"
+app_url     = "https://wildwestwanted.com"
+
+# Networking
+vpc_cidr = "10.20.0.0/16"
+az_count = 2
+
+# Database
+db_name              = "wwwp"
+db_username          = "wwwp_app"
+db_instance_class    = "db.t4g.micro"
+db_allocated_storage = 20
+db_engine_version    = "16.4"
+
+# Images (set to the immutable tag/sha you pushed to ECR for a real deploy)
+web_image_tag    = "latest"
+worker_image_tag = "latest"
+
+# Web service sizing / autoscaling
+web_desired_count = 1
+web_cpu           = 512
+web_memory        = 1024
+web_min_capacity  = 1
+web_max_capacity  = 4
+
+# Worker sizing
+worker_cpu    = 512
+worker_memory = 1024
+
+# App config (non-secret)
+ses_from_email       = "noreply@wildwestwanted.com"
+admin_emails         = "you@example.com"
+stripe_price_credits = "price_xxxxxxxxxxxxxxxxxxxxxxxx"
+alert_email          = "ops@wildwestwanted.com"
+
+log_retention_days = 30

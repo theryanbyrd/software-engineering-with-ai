@@ -1,0 +1,121 @@
+# ci.yml — CI for the Wild West Wanted Poster example (wwwp).
+# Book chapter concept: "A CI gate per concern" — typecheck/lint the web + worker, validate the
+# Terraform, and best-effort sanity-check the SQL. Paths are scoped to this example subdirectory so
+# the wider companion repo isn't rebuilt on every change.
+
+name: wwwp-ci
+
+on:
+  push:
+    paths:
+      - 'examples/wild-west-wanted-poster/**'
+      - '.github/workflows/ci.yml'
+  pull_request:
+    paths:
+      - 'examples/wild-west-wanted-poster/**'
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  EXAMPLE_DIR: examples/wild-west-wanted-poster
+
+jobs:
+  web:
+    name: web — lint + typecheck
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: examples/wild-west-wanted-poster/web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: examples/wild-west-wanted-poster/web/package-lock.json
+      - name: Install
+        run: npm ci || npm install
+      - name: Lint
+        run: npm run lint --if-present
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+  worker:
+    name: worker — lint + typecheck
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: examples/wild-west-wanted-poster/worker
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: examples/wild-west-wanted-poster/worker/package-lock.json
+      - name: Install
+        run: npm ci || npm install
+      - name: Lint
+        run: npm run lint --if-present
+      - name: Typecheck
+        run: npm run typecheck
+
+  terraform:
+    name: terraform — fmt + validate
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: examples/wild-west-wanted-poster/infra/terraform
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: '1.6.6'
+      - name: Format check
+        run: terraform fmt -check -recursive
+      - name: Init (no backend)
+        run: terraform init -backend=false
+      - name: Validate
+        run: terraform validate
+
+  sql:
+    name: sql — syntax check (best effort)
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: wwwp
+          POSTGRES_PASSWORD: wwwp
+          POSTGRES_DB: wwwp
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U wwwp"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      PGHOST: localhost
+      PGPORT: '5432'
+      PGUSER: wwwp
+      PGPASSWORD: wwwp
+      PGDATABASE: wwwp
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply migrations (validates SQL by executing it)
+        working-directory: examples/wild-west-wanted-poster/db
+        run: |
+          set -euo pipefail
+          for f in migrations/*.sql; do
+            echo "Applying $f"
+            psql -v ON_ERROR_STOP=1 -f "$f"
+          done
+      - name: Schema also loads cleanly on a fresh DB
+        working-directory: examples/wild-west-wanted-poster/db
+        run: |
+          set -euo pipefail
+          createdb -h "$PGHOST" -U "$PGUSER" wwwp_schema_check || true
+          PGDATABASE=wwwp_schema_check psql -v ON_ERROR_STOP=1 -f schema.sql

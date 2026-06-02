@@ -1,0 +1,12 @@
+{
+  "name": "wild-west-wanted-poster",
+  "private": true,
+  "description": "Greenfield worked example for Software Engineering with AI (Ch 47): freemium AI wanted-poster SaaS.",
+  "workspaces": ["web", "worker"],
+  "scripts": {
+    "typecheck": "npm --workspace web run typecheck && npm --workspace worker run typecheck",
+    "build": "npm --workspace web run build",
+    "verify": "npm run typecheck"
+  },
+  "license": "MIT"
+}

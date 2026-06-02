@@ -2,6 +2,10 @@
 
 ## Unreleased — Sync to book *revised v15*
 
+### Added — Worked example (Ch 47)
+- `examples/wild-west-wanted-poster/` — a complete greenfield SaaS built from scratch as the book's end-to-end worked example: a freemium AI "wanted poster" generator (5 free/month, $1 = 10 credits). Includes the case-study chapter (README), full Terraform/AWS infra (VPC, ECS Fargate web+worker, RDS Postgres, S3, SQS, SES, Secrets Manager, EventBridge cron, Route53/ACM), a Next.js app (auth, credits, Stripe checkout+webhook, admin), a Node queue worker (Gemini image generation + sharp poster compositing), an event-sourced credit ledger, the agent-ready issues used to build it, and CI. Fills the previously-stubbed `examples/` slot.
+
+
 Companion-repo sync against the book manuscript revised v15. Full audit:
 [`docs/book-sync-audit-v15.md`](docs/book-sync-audit-v15.md).
 
