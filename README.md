@@ -104,6 +104,7 @@ The full directory tree, grouped by purpose. Three sentences per area. Click thr
 | [`do-not-automate-catalog/`](do-not-automate-catalog/) | The Do-Not-Automate catalog (Ch 33) by domain. |
 | [`vendor-procurement-runbook/`](vendor-procurement-runbook/) | The vendor-review checklist (Ch 38), the data-classification walkthrough, the security-review template, and the questions to ask before signing. |
 | [`incident-postmortem-templates/`](incident-postmortem-templates/) | AI-aware postmortem templates (Ch 39). Failure categorization guide, the harness-deficiency checklist, the slop-attribution worksheet. |
+| [`ai-coded-app-security-and-resilience/`](ai-coded-app-security-and-resilience/) | The security & resilience gaps AI-coded apps ship (Ch 36.5). Frontend-bundle secrets, misconfigured RLS, missing rate limits, silent failures, offline/throttled networks — with a paste-ready checklist and the verification gates that enforce them. |
 
 ### Measurement / metrics
 
@@ -119,6 +120,7 @@ The full directory tree, grouped by purpose. Three sentences per area. Click thr
 | Directory | What's there |
 |---|---|
 | [`code-review-craft-workshop/`](code-review-craft-workshop/) | The seven-slop-signatures workshop (Ch 2, Ch 22). Workshop facilitator guide, exercises, and the assessment rubric. |
+| [`loop-engineering/`](loop-engineering/) | Designing the system that prompts your agents (Ch 43.7). The five building blocks (automations, worktrees, skills, connectors, sub-agents) plus memory, and a five-day plan to your first loop. |
 | [`reviewer-burnout-mitigation/`](reviewer-burnout-mitigation/) | Operational patterns for managing reviewer load when generation cost drops 5x. |
 | [`promotion-and-leveling-rubric/`](promotion-and-leveling-rubric/) | The AI-era leveling rubric (Ch 60). Harness contributions count for promotion; verification discipline is a leveling criterion. |
 | [`junior-trajectory/`](junior-trajectory/) | How juniors grow in an AI-native team. The four-quarter trajectory and the apprenticeship pairing pattern. |
@@ -209,11 +211,13 @@ The audit script also runs in CI against this repo's own starter kits — see [`
 | Ch 33.5 — Domains where AI is net-negative | [`do-not-automate-catalog/net-negative-domains.md`](do-not-automate-catalog/net-negative-domains.md) |
 | Ch 34 — Data classification | [`executive-strategic-kit/data-classification-matrix.md`](executive-strategic-kit/data-classification-matrix.md) |
 | Ch 36–37 — Prompt injection | [`prompt-injection-test-suite/`](prompt-injection-test-suite/) |
+| Ch 36.5 — Security & resilience gaps in AI-coded apps | [`ai-coded-app-security-and-resilience/`](ai-coded-app-security-and-resilience/) |
 | Ch 38 — Vendor risk | [`vendor-procurement-runbook/`](vendor-procurement-runbook/) |
 | Ch 39 — Incident response | [`incident-postmortem-templates/`](incident-postmortem-templates/) |
 | Ch 44 — Certification curriculum | [`ai-tooling-onboarding-curriculum/`](ai-tooling-onboarding-curriculum/) |
 | Ch 47 — Worked end-to-end examples | [`examples/wild-west-wanted-poster/`](examples/wild-west-wanted-poster/) |
 | Ch 43.6 — The IC perspective (running agents) | [`docs/ic-perspective-running-agents.md`](docs/ic-perspective-running-agents.md) |
+| Ch 43.7 — Loop engineering | [`loop-engineering/`](loop-engineering/) |
 | Ch 47.5 — AI in non-coding engineering work | [`docs/ai-in-non-coding-engineering-work.md`](docs/ai-in-non-coding-engineering-work.md) |
 | Ch 50.5 — What I might be wrong about | [`docs/what-i-might-be-wrong-about.md`](docs/what-i-might-be-wrong-about.md) |
 | Ch 51 — 90-day plan | [`executive-strategic-kit/90-day-plan.md`](executive-strategic-kit/90-day-plan.md) |
