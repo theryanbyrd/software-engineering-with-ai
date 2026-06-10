@@ -149,7 +149,7 @@ The full directory tree, grouped by purpose. Three sentences per area. Click thr
 | Directory | What's there |
 |---|---|
 | [`docs/`](docs/) | Longer-form guides — the 90-day playbook, legacy-migration walkthrough, measurement-dashboard wiring, certification curriculum, plugin marketplace guide. Some entries are stubbed in v2026.q3 and fill out in v2026.q4. |
-| [`examples/`](examples/) | Worked end-to-end examples. Includes [`wild-west-wanted-poster/`](examples/wild-west-wanted-poster/) — a complete greenfield AI SaaS built from scratch (domain, Terraform/AWS, Next.js app, queue worker, Stripe, Gemini, admin, freemium). The book's Ch 47 worked example. |
+| [`examples/`](examples/) | Worked end-to-end examples. [`wild-west-wanted-poster/`](examples/wild-west-wanted-poster/) — a complete greenfield AI SaaS built from scratch (domain, Terraform/AWS, Next.js app, queue worker, Stripe, Gemini, admin, freemium); the book's Ch 47 worked example. [`osticket-brownfield/`](examples/osticket-brownfield/) — the brownfield counterpart: dropping an agent into ~360k lines of legacy PHP (osTicket) to add a high-stakes feature (TOTP 2FA) with an MVH harness, characterization tests, a tiered spec, and an adversarial-review plan. |
 | [`tools/`](tools/) | Reusable GitHub Actions, editor configs. |
 
 ---
@@ -194,7 +194,7 @@ The audit script also runs in CI against this repo's own starter kits — see [`
 | Ch 6 — Repo Legibility | [`templates/CLAUDE.md`](templates/), [`templates/AGENTS.md`](templates/) |
 | Ch 6.6 — Testing the harness | [`benchmarks/`](benchmarks/), [`evals-and-benchmarks-runbook/`](evals-and-benchmarks-runbook/) |
 | Ch 7 — Verify Command | [`starter-kits/*/scripts/verify.sh`](starter-kits/) |
-| Ch 11 §11.6 — Brownfield MVH | [`starter-kits/legacy-bridge/`](starter-kits/) |
+| Ch 11 §11.6 — Brownfield MVH | [`starter-kits/legacy-bridge/`](starter-kits/), [`examples/osticket-brownfield/`](examples/osticket-brownfield/) |
 | Ch 13 — Skills | [`skills/`](skills/), [`starter-kits/*/.claude/skills/`](starter-kits/) |
 | Ch 14 — Subagents | [`subagents/`](subagents/) |
 | Ch 15 — Hooks | [`hooks/`](hooks/) |
@@ -215,7 +215,7 @@ The audit script also runs in CI against this repo's own starter kits — see [`
 | Ch 38 — Vendor risk | [`vendor-procurement-runbook/`](vendor-procurement-runbook/) |
 | Ch 39 — Incident response | [`incident-postmortem-templates/`](incident-postmortem-templates/) |
 | Ch 44 — Certification curriculum | [`ai-tooling-onboarding-curriculum/`](ai-tooling-onboarding-curriculum/) |
-| Ch 47 — Worked end-to-end examples | [`examples/wild-west-wanted-poster/`](examples/wild-west-wanted-poster/) |
+| Ch 47 — Worked end-to-end examples | [`examples/wild-west-wanted-poster/`](examples/wild-west-wanted-poster/) (greenfield), [`examples/osticket-brownfield/`](examples/osticket-brownfield/) (brownfield) |
 | Ch 43.6 — The IC perspective (running agents) | [`docs/ic-perspective-running-agents.md`](docs/ic-perspective-running-agents.md) |
 | Ch 43.7 — Loop engineering | [`loop-engineering/`](loop-engineering/) |
 | Ch 47.5 — AI in non-coding engineering work | [`docs/ai-in-non-coding-engineering-work.md`](docs/ai-in-non-coding-engineering-work.md) |
