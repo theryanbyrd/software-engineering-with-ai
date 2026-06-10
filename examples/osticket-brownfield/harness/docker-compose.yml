@@ -1,0 +1,43 @@
+# Minimal reproducible LAMP dev environment for osTicket.
+# osTicket ships no dev environment; this is part of the brownfield harness
+# ("treat the environment as a maintained artifact" — Ch on harness env).
+#
+# Usage:
+#   git clone https://github.com/osTicket/osTicket ./osticket-src
+#   docker compose up -d
+#   # then run the web installer at http://localhost:8080/setup/
+#
+# This is a DEV/CI environment only. Do not expose it publicly.
+services:
+  web:
+    image: php:8.1-apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./osticket-src:/var/www/html
+    command: >
+      bash -c "docker-php-ext-install mysqli gd intl > /dev/null 2>&1;
+               a2enmod rewrite > /dev/null 2>&1;
+               apache2-foreground"
+    depends_on:
+      - db
+    environment:
+      # osTicket reads DB config from its installer-written ost-config.php;
+      # these are here so the installer form can be filled consistently.
+      OSTICKET_DB_HOST: db
+      OSTICKET_DB_NAME: osticket
+      OSTICKET_DB_USER: osticket
+      OSTICKET_DB_PASSWORD: osticket
+
+  db:
+    image: mariadb:10.6
+    environment:
+      MARIADB_DATABASE: osticket
+      MARIADB_USER: osticket
+      MARIADB_PASSWORD: osticket
+      MARIADB_ROOT_PASSWORD: root
+    volumes:
+      - osticket-db:/var/lib/mysql
+
+volumes:
+  osticket-db:
