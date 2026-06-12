@@ -18,7 +18,7 @@ The issue (one line):
 
 > "Refund processing: support partial refunds. Currently we can only refund the full charge amount; finance needs to be able to refund a portion."
 
-This is a billing/payments path. Per [`../do-not-automate-catalog/tier-1-never-autonomous.md`](../do-not-automate-catalog/tier-1-never-autonomous.md), Tier 1 applies — these changes are never to be merged on AI authorship alone.
+This is a billing/payments path. Per [`../do-not-automate-catalog/tier-1-never-autonomous.md`](../../do-not-automate-catalog/tier-1-never-autonomous.md), Tier 1 applies — these changes are never to be merged on AI authorship alone.
 
 ## The diff
 
@@ -106,7 +106,7 @@ Total diff: 12 files, 350 lines.
 
 Review this diff. Write the comments you would leave on the PR. Suggested time: 7 minutes.
 
-Note: this PR touches the billing path. Per [`../do-not-automate-catalog/tier-1-never-autonomous.md`](../do-not-automate-catalog/tier-1-never-autonomous.md), the bar is higher than a normal PR.
+Note: this PR touches the billing path. Per [`../do-not-automate-catalog/tier-1-never-autonomous.md`](../../do-not-automate-catalog/tier-1-never-autonomous.md), the bar is higher than a normal PR.
 
 ---
 
@@ -128,7 +128,7 @@ The blast radius is "any user can issue refunds to any charge for any amount." T
 1. `if amount <= 0 or amount > charge.amount` — the new handler accepts negative amounts (Stripe may reject them, but the handler doesn't validate; if Stripe's behavior changes or someone routes around Stripe, this is unsafe)
 2. `if charge.refunded_amount + amount > charge.amount` — the new handler allows refunding more than the charge. Cumulative refunds could exceed the original charge.
 3. The `amount is None` → `charge.amount` default — the new handler defaults `amount` to 0, then passes `amount=0` to Stripe as a "full refund" via the else branch. The behavior is plausibly equivalent but subtly different (and the test doesn't cover it).
-4. The audit logging — `audit_log("refund_initiated", ...)` and `audit_log("refund_completed", ...)` are both absent. Per Tier 1 ("Anything that touches the customer of record without a transaction log"; see [`../do-not-automate-catalog/tier-1-never-autonomous.md`](../do-not-automate-catalog/tier-1-never-autonomous.md)), this is a compliance failure.
+4. The audit logging — `audit_log("refund_initiated", ...)` and `audit_log("refund_completed", ...)` are both absent. Per Tier 1 ("Anything that touches the customer of record without a transaction log"; see [`../do-not-automate-catalog/tier-1-never-autonomous.md`](../../do-not-automate-catalog/tier-1-never-autonomous.md)), this is a compliance failure.
 
 **S7 (severe).** The PR scope is "support partial refunds." The diff includes:
 
@@ -182,7 +182,7 @@ The rename is the dangerous part. It silently violates the Python codebase's nam
 > 3. **S7 (scope):** Unrelated rename mixed into the diff. Split.
 > 4. **S1 (test):** Mock-only test on a billing path. Need behavior-asserting tests with failure coverage.
 >
-> Per [`../do-not-automate-catalog/tier-1-never-autonomous.md`](../do-not-automate-catalog/tier-1-never-autonomous.md), this is a Tier 1 path. Suggest pairing with the billing senior on a re-do; the security gaps in particular need a human author, not an AI rewrite.
+> Per [`../do-not-automate-catalog/tier-1-never-autonomous.md`](../../do-not-automate-catalog/tier-1-never-autonomous.md), this is a Tier 1 path. Suggest pairing with the billing senior on a re-do; the security gaps in particular need a human author, not an AI rewrite.
 
 ### Trainee may have also flagged
 
@@ -213,7 +213,7 @@ For the workshop facilitator running this exercise:
 2. **"Who spotted S4? Which validation specifically?"** Count, then name each of the 4 drops aloud.
 3. **"Who spotted S7?"** Count.
 4. **"Who would have approved this PR?"** No one should raise a hand. If anyone does, the workshop needs to do this exercise again with debriefing.
-5. **"What's the rule for Tier 1 paths?"** Looking for: never approve on AI authorship alone; CODEOWNERS enforces; security-reviewer subagent runs. Per [`../do-not-automate-catalog/tier-1-never-autonomous.md`](../do-not-automate-catalog/tier-1-never-autonomous.md).
+5. **"What's the rule for Tier 1 paths?"** Looking for: never approve on AI authorship alone; CODEOWNERS enforces; security-reviewer subagent runs. Per [`../do-not-automate-catalog/tier-1-never-autonomous.md`](../../do-not-automate-catalog/tier-1-never-autonomous.md).
 
 ## Why this is exercise 03
 

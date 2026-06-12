@@ -31,4 +31,4 @@ An empty findings list / empty output / "no changes needed" is a valid response 
 
 Every subagent must have at least one entry in `benchmarks/` exercising it. Add yours and link here:
 
-- [`benchmarks/[your-subagent-task].md`](../benchmarks/[your-subagent-task].md)
+- `benchmarks/<your-subagent-task>.md`

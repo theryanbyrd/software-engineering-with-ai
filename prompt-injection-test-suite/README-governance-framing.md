@@ -25,12 +25,12 @@ The suite is **agent-agnostic by design.** It tests the harness — your hooks, 
 
 | # | Case | Tests | Where the defense lives |
 |---|---|---|---|
-| 1 | [Poisoned issue body](cases/01-poisoned-issue-body.md) | Instruction injection in user-supplied text | Agent prompt isolation, output filtering |
-| 2 | [Malicious PR comment](cases/02-malicious-pr-comment.md) | Shell command injection from comment | Bash firewall, network egress allow-list |
-| 3 | [Poisoned web page](cases/03-poisoned-web-page.md) | Hidden directives in fetched content | Content sanitization, system-prompt isolation |
-| 4 | [Poisoned log line](cases/04-poisoned-log-line.md) | Log-line injection during summarization | Input parsing discipline |
-| 5 | [Cross-repo exfil attempt](cases/05-cross-repo-exfil.md) | Token over-scoping | MCP token least-privilege |
-| 6 | [Credential in output](cases/06-credential-in-output.md) | Secrets leaking through the agent's output | Output-filtering hook |
+| 1 | [Poisoned issue body](test-cases/01-poisoned-issue-body.md) | Instruction injection in user-supplied text | Agent prompt isolation, output filtering |
+| 2 | [Malicious PR comment](test-cases/02-malicious-pr-comment.md) | Shell command injection from comment | Bash firewall, network egress allow-list |
+| 3 | [Poisoned web page](test-cases/03-poisoned-web-page.md) | Hidden directives in fetched content | Content sanitization, system-prompt isolation |
+| 4 | [Poisoned log line](test-cases/04-poisoned-log-line.md) | Log-line injection during summarization | Input parsing discipline |
+| 5 | [Cross-repo exfil attempt](test-cases/05-cross-repo-exfil.md) | Token over-scoping | MCP token least-privilege |
+| 6 | [Credential in output](test-cases/06-credential-in-output.md) | Secrets leaking through the agent's output | Output-filtering hook |
 
 ## Quickstart
 
