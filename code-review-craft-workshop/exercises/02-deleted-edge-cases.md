@@ -144,7 +144,7 @@ For the workshop facilitator running this exercise:
 
 ## Why this is exercise 02
 
-S2 is the second-most-common signature (per [`../incident-postmortem-templates/SLOP_SIGNATURE_REFERENCE.md`](../incident-postmortem-templates/SLOP_SIGNATURE_REFERENCE.md)) and the one with the most expensive failure mode short of S5. A reviewer who can't catch S2 will ship null-pointer bugs on a regular basis once the team's AI authorship rate goes up.
+S2 is the second-most-common signature (per [`../incident-postmortem-templates/SLOP_SIGNATURE_REFERENCE.md`](../../incident-postmortem-templates/SLOP_SIGNATURE_REFERENCE.md)) and the one with the most expensive failure mode short of S5. A reviewer who can't catch S2 will ship null-pointer bugs on a regular basis once the team's AI authorship rate goes up.
 
 The exercise specifically drills the "open the original" habit. Engineers who pattern-match on "the new code is cleaner" without doing the comparison will fail this exercise. That failure is the data — it tells the manager exactly what muscle needs developing.
 

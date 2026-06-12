@@ -19,9 +19,7 @@ export function formatUsd(cents: number): string {
 /**
  * Result of a fallible operation. Functional style — no exceptions for expected failures.
  */
-export type Result<T, E = string> =
-  | { ok: true; value: T }
-  | { ok: false; error: E };
+export type Result<T, E = string> = { ok: true; value: T } | { ok: false; error: E };
 
 export function ok<T>(value: T): Result<T, never> {
   return { ok: true, value };
