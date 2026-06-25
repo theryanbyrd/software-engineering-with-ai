@@ -1,17 +1,54 @@
 {
   "$schema": "https://docs.anthropic.com/claude-code/settings.schema.json",
+  "permissions": {
+    "allow": [
+      "Bash(make verify)",
+      "Bash(bash scripts/verify.sh:*)",
+      "Bash(pytest:*)",
+      "Bash(ruff:*)",
+      "Bash(mypy:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Read(./**)",
+      "Edit(./src/**)",
+      "Edit(./tests/**)"
+    ],
+    "ask": [
+      "Bash(git push:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Edit(./.github/workflows/**)",
+      "Edit(./src/starter/api/auth/**)",
+      "Edit(./src/starter/api/billing/**)",
+      "Edit(./pyproject.toml)",
+      "Edit(./CODEOWNERS)",
+      "WebFetch",
+      "Bash(twine upload:*)"
+    ]
+  },
   "hooks": {
     "PreToolUse": [
       {
         "matcher": "Bash",
         "hooks": [
-          { "type": "command", "command": ".claude/hooks/bash-firewall.sh" }
+          {
+            "type": "command",
+            "command": ".claude/hooks/bash-firewall.sh"
+          }
         ]
       },
       {
         "matcher": "Edit|Write|MultiEdit",
         "hooks": [
-          { "type": "command", "command": ".claude/hooks/protected-paths.sh" }
+          {
+            "type": "command",
+            "command": ".claude/hooks/protected-paths.sh"
+          }
         ]
       }
     ],
@@ -19,7 +56,10 @@
       {
         "matcher": "Edit|Write|MultiEdit",
         "hooks": [
-          { "type": "command", "command": ".claude/hooks/post-edit-format.sh" }
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-edit-format.sh"
+          }
         ]
       }
     ]

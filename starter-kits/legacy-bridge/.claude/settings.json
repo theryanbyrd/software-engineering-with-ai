@@ -1,18 +1,54 @@
 {
   "$schema": "https://docs.anthropic.com/claude-code/settings.schema.json",
+  "permissions": {
+    "allow": [
+      "Bash(bash scripts/verify.sh:*)",
+      "Bash(bash scripts/discover.sh:*)",
+      "Bash(bash scripts/legacy-verify.sh:*)",
+      "Bash(pytest:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git bisect:*)",
+      "Read(./**)"
+    ],
+    "ask": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Edit(./**)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Edit(./.github/workflows/**)",
+      "Edit(./CODEOWNERS)",
+      "WebFetch",
+      "Bash(git push --force:*)"
+    ]
+  },
   "hooks": {
     "PreToolUse": [
       {
         "matcher": "Bash",
         "hooks": [
-          { "type": "command", "command": ".claude/hooks/bash-firewall.sh" }
+          {
+            "type": "command",
+            "command": ".claude/hooks/bash-firewall.sh"
+          }
         ]
       },
       {
         "matcher": "Edit|Write|MultiEdit",
         "hooks": [
-          { "type": "command", "command": ".claude/hooks/legacy-protected-paths.sh" },
-          { "type": "command", "command": ".claude/hooks/no-l3-in-legacy.sh" }
+          {
+            "type": "command",
+            "command": ".claude/hooks/legacy-protected-paths.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/no-l3-in-legacy.sh"
+          }
         ]
       }
     ],
@@ -20,7 +56,10 @@
       {
         "matcher": "Edit|Write|MultiEdit",
         "hooks": [
-          { "type": "command", "command": ".claude/hooks/fence-new-violations.sh" }
+          {
+            "type": "command",
+            "command": ".claude/hooks/fence-new-violations.sh"
+          }
         ]
       }
     ]
