@@ -196,6 +196,7 @@ Once one agent is reliable, multiply throughput — with eyes open about cost, s
 - **Worktrees / parallel sessions:** run separate sessions in isolated git checkouts for unrelated workstreams so edits don't collide.
 - **Writer / reviewer:** one session implements; a second, fresh session reviews the diff. The reviewer isn't biased toward code it just wrote, so it catches more.
 - **Headless mode:** `claude -p "…"` for CI, pre-commit hooks, and large migrations. Loop it over a file list with `--allowedTools` to scope what it can do unattended.
+- **Automate the loop:** once a step is reliable, stop typing it. `/loop <interval> <prompt>` re-runs a prompt on a timer (`/loop 15m run the tests, and if anything fails use /fix-tests`); `/goal` keeps iterating until a condition is true and then stops. Nest them — the timer re-arms the work, the goal defines verified-done. A `/loop` is session-bound by design and auto-expires after a few days, so for anything that must outlive a closed laptop climb the persistence ladder: `/loop` (in-session) → `/schedule` (cloud cron, hourly/daily) → Routines (cloud-hosted, survives the machine being off). See the Loop Engineering chapter for the full treatment.
 - **Mind the bill:** subagent- and team-heavy workflows can burn several times the tokens of a single session. The time savings usually justify it on big tasks — but decide on purpose.
 
 ```
