@@ -14,7 +14,7 @@ This tag corresponds to a substantial structural and content pass on the repo. T
 
 ### Content
 
-- **Intake (formerly "Tixie") pattern.** Renamed everywhere in the repo and the book. The pattern name was distracting; "Intake" is descriptive of what it does.
+- **Intake pattern.** "Intake" is descriptive of what it does.
 - **URL inconsistency fixed.** All `github.com/ryanbyrd/ai-engineering-handbook` references replaced with `github.com/theryanbyrd/software-engineering-with-ai` (the actual repo location). Affected: README, audit script HTML footer, starter-kit CI workflows, exec-kit README.
 - **Binary deliverables replaced with markdown sources.** ROI calculator, board deck template, all-hands deck template, approved tooling matrix, and data classification matrix are now agent-readable markdown. The rendered `.xlsx`/`.pptx` files remain in `executive-strategic-kit/rendered/` for executives who prefer those formats, but the markdown is the source of truth (Ch 6 §6.0 — code/text is the source of truth).
 
